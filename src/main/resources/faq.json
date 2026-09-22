@@ -1,0 +1,74 @@
+[
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como redefinir minha senha?",
+    "resposta": "Acesse a tela de Login. Coloque o seu E-mail e clique em Iniciar e clique em Esqueci minha senha, siga as instruções enviadas para o seu e-mail.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como alterar meus dados cadastrais?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em Meus Dados.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como alterar o telefone do cadastro?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em Meus Dados.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Não consigo alterar o meu cpf?",
+    "resposta": "Para alterar seu CPF, vá até o Perfil no canto superior direito do aplicativo e clique em Meus Dados.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como eu vejo as notificações?",
+    "resposta": "Para ver as notificações, vá até o Perfil no canto superior direito do aplicativo e clique em Notificações.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como eu vejo os meus ingressos?",
+    "resposta": "Para ver os seus ingressos, vá até o Perfil no canto superior direito do aplicativo e clique em Meus Ingressos.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como eu vejo meus ingressos anteiores?",
+    "resposta": "Para ver seus ingressos anteriores, vá até o Perfil no canto superior direito do aplicativo e clique em Ingressos Anteriores.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como eu desativo as notificaçõs do aplicativo?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em Receber Alertas, desmarque a opção de receber notificações.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "",
+    "resposta": "",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "",
+    "resposta": "",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "",
+    "resposta": "",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "",
+    "resposta": "",
+    "destaque": true
+  }
+]

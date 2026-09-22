@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot FAQ - Java 8 & Tomcat 9</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    body { background: #0b0f19; color: #f8fafc; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 16px; }
+    .chat-card { background: #151e2e; width: 100%; max-width: 480px; height: 680px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #1e293b; }
+    
+    .header { background: linear-gradient(135deg, #2563eb, #4f46e5); padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
+    .header .avatar { width: 42px; height: 42px; border-radius: 50%; background: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 22px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+    .header h2 { font-size: 17px; font-weight: 600; color: #ffffff; }
+    .header p { font-size: 12px; color: #bfdbfe; display: flex; align-items: center; gap: 6px; }
+    .header p::before { content: ''; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; display: inline-block; }
+    
+    .messages { flex: 1; padding: 18px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; background: #0f172a; }
+    
+    .msg-row { display: flex; width: 100%; }
+    .msg-row.user { justify-content: flex-end; }
+    .msg-row.bot { justify-content: flex-start; }
+    
+    .msg { max-width: 82%; padding: 12px 16px; font-size: 14px; line-height: 1.5; word-wrap: break-word; }
+    .msg.user { background: #2563eb; color: #ffffff; border-radius: 18px 18px 4px 18px; box-shadow: 0 4px 12px rgba(37,99,235,0.25); }
+    .msg.bot { background: #1e293b; color: #f1f5f9; border-radius: 18px 18px 18px 4px; border: 1px solid #334155; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .msg.bot strong { color: #93c5fd; font-weight: 600; }
+
+    .typing-bubble { display: flex; align-items: center; gap: 5px; padding: 10px 16px; background: #1e293b; border-radius: 18px 18px 18px 4px; border: 1px solid #334155; width: fit-content; }
+    .typing-bubble span { width: 7px; height: 7px; background: #94a3b8; border-radius: 50%; display: inline-block; animation: typingBounce 1.4s infinite ease-in-out both; }
+    .typing-bubble span:nth-child(1) { animation-delay: -0.32s; }
+    .typing-bubble span:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes typingBounce {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
+      40% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .quick-chips-wrapper { padding: 8px 14px 12px; background: #151e2e; border-top: 1px solid #1e293b; }
+    .quick-chips-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 6px; font-weight: 600; }
+    .quick-chips { display: flex; gap: 6px; flex-wrap: wrap; max-height: 110px; overflow-y: auto; }
+    .chip { background: #1e293b; border: 1px solid #334155; color: #93c5fd; padding: 6px 12px; border-radius: 16px; font-size: 12px; cursor: pointer; transition: all 0.2s; text-align: left; }
+    .chip:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+
+    .input-area { padding: 12px 14px; display: flex; gap: 8px; border-top: 1px solid #1e293b; background: #0b0f19; }
+    .input-area input { flex: 1; padding: 11px 16px; border-radius: 12px; border: 1px solid #334155; background: #151e2e; color: #ffffff; font-size: 14px; outline: none; }
+    .input-area input:focus { border-color: #2563eb; }
+    .input-area button { background: #2563eb; color: white; border: none; padding: 0 18px; border-radius: 12px; font-weight: 600; cursor: pointer; transition: background 0.2s; font-size: 14px; }
+    .input-area button:hover { background: #1d4ed8; }
+    .input-area button:disabled { opacity: 0.5; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+  <div class="chat-card">
+    <div class="header">
+      <div class="avatar">☕</div>
+      <div>
+        <h2>Assistente Virtual (Java 8)</h2>
+        <p>Online | Tomcat 9 & Gemini</p>
+      </div>
+    </div>
+    <div class="messages" id="messages">
+      <div class="msg-row bot">
+        <div class="msg bot">Olá! Sou o assistente virtual em Java 8. Como posso tirar suas dúvidas hoje?</div>
+      </div>
+    </div>
+    
+    <div class="quick-chips-wrapper">
+      <div class="quick-chips-title">Sugestões de Perguntas:</div>
+      <div class="quick-chips" id="quickChips"></div>
+    </div>
+
+    <form class="input-area" id="chatForm">
+      <input type="text" id="userInput" placeholder="Digite sua dúvida aqui..." autocomplete="off" required />
+      <button type="submit" id="sendBtn">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    const messagesDiv = document.getElementById('messages');
+    const quickChipsDiv = document.getElementById('quickChips');
+    const chatForm = document.getElementById('chatForm');
+    const userInput = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
+
+    // Base URL dinâmica para funcionar tanto em /chatbot/ quanto em /
+    const basePath = window.location.pathname.endsWith('/') 
+      ? window.location.pathname 
+      : window.location.pathname + '/';
+
+    // Carrega perguntas rápidas do backend
+    fetch(basePath + 'api/faq/quick-questions')
+      .then(res => res.json())
+      .then(data => {
+        if (data.questions && data.questions.length > 0) {
+          data.questions.forEach(q => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'chip';
+            btn.textContent = q;
+            btn.onclick = () => sendMessage(q);
+            quickChipsDiv.appendChild(btn);
+          });
+        }
+      })
+      .catch(err => console.log('Aviso ao carregar perguntas rápidas:', err));
+
+    chatForm.onsubmit = (e) => {
+      e.preventDefault();
+      const text = userInput.value.trim();
+      if (text) {
+        sendMessage(text);
+        userInput.value = '';
+      }
+    };
+
+    function formatText(text) {
+      const escaped = text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+      return escaped
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br>');
+    }
+
+    function appendMessage(text, sender) {
+      const row = document.createElement('div');
+      row.className = 'msg-row ' + sender;
+
+      const bubble = document.createElement('div');
+      bubble.className = 'msg ' + sender;
+      bubble.innerHTML = formatText(text);
+
+      row.appendChild(bubble);
+      messagesDiv.appendChild(row);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+      const row = document.createElement('div');
+      row.className = 'msg-row bot';
+      row.id = 'typingRow';
+
+      const bubble = document.createElement('div');
+      bubble.className = 'typing-bubble';
+      bubble.innerHTML = '<span></span><span></span><span></span>';
+
+      row.appendChild(bubble);
+      messagesDiv.appendChild(row);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+      const el = document.getElementById('typingRow');
+      if (el) el.remove();
+    }
+
+    async function sendMessage(text) {
+      appendMessage(text, 'user');
+      sendBtn.disabled = true;
+      showTypingIndicator();
+
+      try {
+        const response = await fetch(basePath + 'api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text })
+        });
+        const data = await response.json();
+        
+        removeTypingIndicator();
+        if (data.reply) {
+          appendMessage(data.reply, 'bot');
+        } else {
+          appendMessage(data.error || 'Erro ao obter resposta do assistente.', 'bot');
+        }
+      } catch (err) {
+        removeTypingIndicator();
+        appendMessage('Erro de conexão com o servidor Java.', 'bot');
+      } finally {
+        sendBtn.disabled = false;
+        userInput.focus();
+      }
+    }
+  </script>
+</body>
+</html>

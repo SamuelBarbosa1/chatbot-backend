@@ -1,0 +1,31 @@
+[
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como redefinir minha senha?",
+    "resposta": "Acesse a tela de Login, clique em Esqueci minha senha, informe seu e-mail cadastrado e siga as instruções enviadas para o seu e-mail.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como alterar meus dados cadastrais?",
+    "resposta": "Vá até o menu Perfil no canto superior esquerdo do aplicativo e toque em Editar Perfil.",
+    "destaque": true
+  },
+  {
+    "categoria": "Financeiro",
+    "pergunta": "Como emitir a segunda via do boleto?",
+    "resposta": "Navegue até a aba Financeiro > Meus Boletos e selecione o botão Baixar PDF referente ao mês desejado.",
+    "destaque": true
+  },
+  {
+    "categoria": "Suporte",
+    "pergunta": "Qual o horário de atendimento do suporte humano?",
+    "resposta": "Nosso atendimento presencial/humano funciona de segunda a sexta-feira, das 08:00 às 18:00.",
+    "destaque": true
+  },
+  {
+    "categoria": "Convites",
+    "pergunta": "Como posso cancelar esse convite?",
+    "resposta": "Navegue até a área de Convites, selecione o convite desejado e clique em Cancelar."
+  }
+]

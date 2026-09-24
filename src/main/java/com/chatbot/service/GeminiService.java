@@ -16,7 +16,8 @@ public class GeminiService {
     private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
     private static final String BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models/";
 
-    // Cliente HTTP compartilhado com pool de conexões HTTP/2 para máxima performance
+    // Cliente HTTP compartilhado com pool de conexões HTTP/2 para máxima
+    // performance
     private static final OkHttpClient httpClient = new OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
             .readTimeout(20, TimeUnit.SECONDS)
@@ -28,20 +29,22 @@ public class GeminiService {
     private final double temperature;
 
     public GeminiService() {
-        String configuredModels = ConfigLoader.get("gemini.models", "gemini-3.6-flash,gemini-flash-latest");
+        String configuredModels = ConfigLoader.get("gemini.models", "gemini-2.5-flash,gemini-flash-latest");
         this.modelsToTry = Arrays.asList(configuredModels.split(","));
-        
+
         double temp = 0.3;
         try {
             temp = Double.parseDouble(ConfigLoader.get("gemini.temperature", "0.3"));
-        } catch (NumberFormatException ignored) {}
+        } catch (NumberFormatException ignored) {
+        }
         this.temperature = temp;
     }
 
     public String generateReply(String userMessage) throws IOException {
         String apiKey = ConfigLoader.getApiKey();
         if (apiKey == null || apiKey.trim().isEmpty()) {
-            throw new IllegalStateException("GEMINI_API_KEY não foi configurada no application.properties ou nas variáveis de ambiente.");
+            throw new IllegalStateException(
+                    "GEMINI_API_KEY não foi configurada no application.properties ou nas variáveis de ambiente.");
         }
 
         String systemInstruction = FaqLoader.buildSystemInstruction();
@@ -51,7 +54,8 @@ public class GeminiService {
 
         for (String rawModel : modelsToTry) {
             String model = rawModel.trim();
-            if (model.isEmpty()) continue;
+            if (model.isEmpty())
+                continue;
 
             String endpointUrl = BASE_URL + model + ":generateContent?key=" + apiKey;
 
@@ -79,7 +83,8 @@ public class GeminiService {
                     if (statusCode == 503 || statusCode == 429) {
                         try {
                             Thread.sleep(400);
-                        } catch (InterruptedException ignored) {}
+                        } catch (InterruptedException ignored) {
+                        }
                     } else {
                         break; // 404 ou erro definitivo, vai para o próximo modelo
                     }

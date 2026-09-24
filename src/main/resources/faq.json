@@ -37,7 +37,7 @@
   },
   {
     "categoria": "Conta e Acesso",
-    "pergunta": "Como eu vejo meus ingressos anteiores?",
+    "pergunta": "Como eu vejo meus ingressos anteriores?",
     "resposta": "Para ver seus ingressos anteriores, vá até o Perfil no canto superior direito do aplicativo e clique em Ingressos Anteriores.",
     "destaque": true
   },
@@ -49,26 +49,33 @@
   },
   {
     "categoria": "Conta e Acesso",
-    "pergunta": "",
-    "resposta": "",
+    "pergunta": "Meus amigos ou familiares, podem cadastrar no applicativo?",
+    "resposta": "Sim, podem se cadastrarem no aplicativo, se eles forem socios vão ter todos os beneficios de um associado, se for não associado não terão os mesmos beneficios.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
-    "pergunta": "",
-    "resposta": "",
+    "pergunta": "Como posso saber os beneficios do associado?",
+    "resposta": "Para ver os beneficios do associado, entre em contato com a secretaria para saber mais informações.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
-    "pergunta": "",
-    "resposta": "",
+    "pergunta": "Como posso saber se sou associado?",
+    "resposta": "Para verificar se você é associado, entre em contato com a secretaria para saber mais informações.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
-    "pergunta": "",
-    "resposta": "",
+    "pergunta": "Como posso fazer para ser sócio?",
+    "resposta": "Para fazer para ser sócio, entre em contato com a secretaria para saber mais informações ou procure uma AABB mais proxima de você.",
     "destaque": true
-  }
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como posso transferir minha associação para outra AABB?",
+    "resposta": "Para transferir sua associação para outra AABB, entre em contato com a secretaria para saber mais informações.",
+    "destaque": true
+  },
+  {}
 ]

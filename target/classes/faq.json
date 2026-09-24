@@ -8,67 +8,91 @@
   {
     "categoria": "Conta e Acesso",
     "pergunta": "Como alterar meus dados cadastrais?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em Meus Dados.",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo ou nome perfil e clique em Meus Dados.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
     "pergunta": "Como alterar o telefone do cadastro?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em Meus Dados.",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo ou no icone perfil e clique em Meus Dados.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
     "pergunta": "Não consigo alterar o meu cpf?",
-    "resposta": "Para alterar seu CPF, vá até o Perfil no canto superior direito do aplicativo e clique em Meus Dados.",
+    "resposta": "Para alterar seu CPF, vá até o Perfil no canto superior direito do aplicativo ou no icone perfil e clique em Meus Dados.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
     "pergunta": "Como eu vejo as notificações?",
-    "resposta": "Para ver as notificações, vá até o Perfil no canto superior direito do aplicativo e clique em Notificações.",
+    "resposta": "Para ver as notificações, vá até o Perfil no canto superior direito do aplicativo ou no icone perfil e clique em Notificações.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
     "pergunta": "Como eu vejo os meus ingressos?",
-    "resposta": "Para ver os seus ingressos, vá até o Perfil no canto superior direito do aplicativo e clique em Meus Ingressos.",
+    "resposta": "Para ver os seus ingressos, vá até o Perfil no canto superior direito do aplicativo ou no icone perfil e clique em Meus Ingressos.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
-    "pergunta": "Como eu vejo meus ingressos anteiores?",
-    "resposta": "Para ver seus ingressos anteriores, vá até o Perfil no canto superior direito do aplicativo e clique em Ingressos Anteriores.",
+    "pergunta": "Como eu vejo meus ingressos anteriores?",
+    "resposta": "Para ver seus ingressos anteriores, vá até o Perfil no canto superior direito do aplicativo ou no icone perfil, clique em Ingressos Anteriores.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
     "pergunta": "Como eu desativo as notificaçõs do aplicativo?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em Receber Alertas, desmarque a opção de receber notificações.",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo ou no icone perfil, clique em Receber Alertas, desmarque a opção de receber notificações.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
-    "pergunta": "",
-    "resposta": "",
+    "pergunta": "Meus amigos ou familiares, podem cadastrar no applicativo?",
+    "resposta": "Sim, podem se cadastrarem no aplicativo, se eles forem socios vão ter todos os beneficios de um associado, se for não associado não terão os mesmos beneficios.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
-    "pergunta": "",
-    "resposta": "",
+    "pergunta": "Como posso saber os beneficios do associado?",
+    "resposta": "Para ver os beneficios do associado, entre em contato com a secretaria para saber mais informações.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
-    "pergunta": "",
-    "resposta": "",
+    "pergunta": "Como posso saber se sou associado?",
+    "resposta": "Para verificar se você é associado, entre em contato com a secretaria para saber mais informações.",
     "destaque": true
   },
   {
     "categoria": "Conta e Acesso",
-    "pergunta": "",
-    "resposta": "",
+    "pergunta": "Como posso fazer para ser sócio?",
+    "resposta": "Para fazer para ser sócio, entre em contato com a secretaria para saber mais informações ou procure uma AABB mais proxima de você.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como posso transferir minha associação para outra AABB?",
+    "resposta": "Para transferir sua associação para outra AABB, entre em contato com a secretaria para saber mais informações.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como faço para sair da minha conta?",
+    "resposta": "Para sair da sua conta, vá até o Perfil no canto superior direito do aplicativo ou no icone perfil, clique em Sair da conta.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como faço para excluir minha conta",
+    "resposta": "Para excluir sua conta, vá até o Perfil no canto superior direito do aplicativo ou no icone perfil, clique em Meus dados e depois em Excluir conta.",
+    "destaque": true
+  },
+  {
+    "categoria": "Conta e Acesso",
+    "pergunta": "Como excluo uma conta de um conhecido, amigo, ou familiar?",
+    "resposta": "Para excluir uma conta de alguem, entre na conta ou peça para a pessoa ir no canto superior direito ou no icone perfil, clique em Meus dados e depois em Excluir conta. ",
     "destaque": true
   }
 ]

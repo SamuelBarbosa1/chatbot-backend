@@ -2,13 +2,13 @@
   {
     "modulo": "Perfil e Acesso",
     "pergunta": "Como redefinir minha senha?",
-    "resposta": "Acesse a tela de Login. Coloque o seu E-mail, clique em Iniciar e depois em \"Esqueci minha senha\". Siga as instruções enviadas para o seu e-mail cadastrado.",
+    "resposta": "Acesse a tela de Login, informe seu e-mail, clique em Iniciar e depois em \"Esqueci minha senha\". Siga as instruções enviadas para o seu e-mail cadastrado.",
     "destaque": true
   },
   {
     "modulo": "Perfil e Acesso",
-    "pergunta": "O que significa Você é associado/Colabadorar?",
-    "resposta": "Para ser um associado ou colaborador, você precisa se autenticar ser um associado da associação",
+    "pergunta": "O que significa a opção 'Você é associado ou colaborador'?",
+    "resposta": "Essa opção serve para identificar seu vínculo com o clube. Ao selecioná-la, basta autenticar sua matrícula ou CPF para ter acesso aos benefícios exclusivos de associado.",
     "destaque": false
   },
   {
@@ -31,7 +31,7 @@
   },
   {
     "modulo": "Perfil e Acesso",
-    "pergunta": "Não consigo alterar o meu cpf?",
+    "pergunta": "Não consigo alterar o meu CPF?",
     "resposta": "Para alterar ou regularizar seu CPF, vá até o Perfil no canto superior direito do aplicativo e clique em \"Meus Dados\". Caso necessite de alteração cadastral avançada, consulte a secretaria.",
     "destaque": false
   },
@@ -49,8 +49,8 @@
   },
   {
     "modulo": "Perfil e Acesso",
-    "pergunta": "Preciso ser sócio para comprar os ingressos e ir para algum evento?",
-    "resposta": "Não, não precisa ser sócio do clube para comprar os ingressos e ir para algum evento. Pode comprar para amigos e familiares também.",
+    "pergunta": "Preciso ser sócio para comprar ingressos ou participar de eventos?",
+    "resposta": "Não, não é obrigatório ser sócio do clube para comprar ingressos ou participar de eventos. Você também pode comprar ingressos para amigos e familiares.",
     "destaque": false
   },
   {
@@ -68,18 +68,18 @@
   {
     "modulo": "Ingressos",
     "pergunta": "Como eu compro os ingressos para o show?",
-    "resposta": "Para comprar os ingressos para o show, vá até a aba Início e selecione o show desejado, clique no botão de Comprar, selecione as opções e no final escolha o método de pagamento.",
+    "resposta": "Para comprar ingressos para um show, vá até a aba Início, selecione o evento desejado, clique no botão \"Comprar\", escolha as opções de ingresso e conclua com o método de pagamento desejado.",
     "destaque": true
   },
   {
     "modulo": "Ingressos",
-    "pergunta": "Como eu vejo os ingressos que eu comprei?",
+    "pergunta": "Como eu vejo os ingressos que comprei?",
     "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Meus Ingressos'.",
     "destaque": true
   },
   {
     "modulo": "Ingressos",
-    "pergunta": "Como vejo meus Ingressos Anteriores?",
+    "pergunta": "Como vejo meus ingressos anteriores?",
     "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Ingressos Anteriores'.",
     "destaque": false
   },
@@ -92,13 +92,13 @@
   {
     "modulo": "Ingressos",
     "pergunta": "Posso usar o ingresso de outra pessoa?",
-    "resposta": "Não, cada ingresso é individual para cada conta. Somente o titular do ingresso poderá entrar no evento.",
+    "resposta": "Não, cada ingresso é individual e nominal para cada conta. Somente o titular do ingresso poderá entrar no evento.",
     "destaque": false
   },
   {
     "modulo": "Ingressos",
-    "pergunta": "Posso transferir meu ingresso para uma outra pessoa?",
-    "resposta": "Sim, você pode transferir seu ingresso para outra pessoa. Vá  Até ingressos, selecione o ingresso desejado e clique em 'Transferir.",
+    "pergunta": "Posso transferir meu ingresso para outra pessoa?",
+    "resposta": "Sim! Você pode transferir seu ingresso para outra pessoa. Vá até o menu Meus Ingressos, selecione o ingresso desejado e clique em 'Transferir'.",
     "destaque": false
   },
   {
@@ -109,7 +109,7 @@
   },
   {
     "modulo": "Ingressos",
-    "pergunta": "Comprei um ingresso mas ele não aparece na minha carteirinha?",
+    "pergunta": "Comprei um ingresso, mas ele não aparece na minha carteirinha?",
     "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Meus Ingressos'. Se o ingresso não estiver aparecendo, entre em contato com a secretaria do clube.",
     "destaque": false
   },
@@ -127,14 +127,20 @@
   },
   {
     "modulo": "Ingressos",
-    "pergunta": "Quero saber mais das informações do evento",
-    "resposta": "Para saber das informações dos eventos, selecione o evento, lá nostará o local, descrição, atrações e o contato.",
+    "pergunta": "Como ver mais informações sobre o evento?",
+    "resposta": "Para ver detalhes do evento, acesse a aba Início e selecione o evento desejado. Lá você encontrará local, data, descrição, atrações e contato.",
     "destaque": false
   },
   {
-    "modulo": "Inicio",
-    "pergunta": "O que significa esse Vive à sua maneira?",
-    "resposta": "Significa quais shows estão cadastros em cada evento",
+    "modulo": "Início",
+    "pergunta": "O que significa a seção 'Viva à sua maneira'?",
+    "resposta": "Nessa seção você encontra os principais shows, atrações e eventos em destaque disponíveis no aplicativo para você aproveitar.",
+    "destaque": false
+  },
+  {
+    "modulo": "Início",
+    "pergunta": "Onde encontro os jogos que estão acontecendo no momento?",
+    "resposta": "Na tela de Início, na seção 'Viva à sua maneira', você encontra os principais shows, atrações e eventos em destaque disponíveis no aplicativo para você aproveitar.",
     "destaque": false
   }
 ]

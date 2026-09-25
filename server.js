@@ -1,24 +1,21 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import fs from 'fs';
+import { testDbConnection } from './db.js';
+import {
+  getFaqData,
+  getDestaques,
+  getModulos,
+  createFaqItem,
+  updateFaqItem,
+  deleteFaqItem
+} from './faqService.js';
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-
-// 1. Função para carregar dinamicamente o FAQ do arquivo JSON
-function getFaqData() {
-  try {
-    const rawData = fs.readFileSync('./faq.json', 'utf-8');
-    return JSON.parse(rawData);
-  } catch (err) {
-    console.error('Erro ao ler faq.json:', err);
-    return [];
-  }
-}
 
 // 2. Normalizador de texto (remove acentos, pontuações e converte para minúsculas)
 function normalizeText(text) {
@@ -55,8 +52,8 @@ const SUBJECT_MAP = {
   'dados': ['dados', 'cadastro', 'cadastrais', 'cadastrado', 'cadastrar', 'perfil', 'nome', 'endereco'],
   'notificacao': ['notificacao', 'notificacoes', 'alerta', 'alertas', 'aviso', 'avisos', 'push', 'mensagens'],
   'ingresso': ['ingresso', 'ingressos', 'entrada', 'entradas', 'bilhete', 'bilhetes', 'convite', 'convites', 'ticket', 'tickets', 'carteirinha'],
-  'evento': ['show', 'shows', 'evento', 'eventos', 'festa', 'festas', 'localizacao', 'local', 'endereco', 'lugar', 'mapa'],
-  'socio': ['socio', 'socios', 'associado', 'associados', 'associacao', 'clube', 'matricula', 'filiado', 'titular'],
+  'evento': ['show', 'shows', 'evento', 'eventos', 'festa', 'festas', 'localizacao', 'local', 'endereco', 'lugar', 'mapa', 'viva', 'maneira'],
+  'socio': ['socio', 'socios', 'associado', 'associados', 'associacao', 'clube', 'matricula', 'filiado', 'titular', 'colaborador'],
   'responsavel': ['responsavel', 'responsaveis', 'menor', 'filho', 'filhos', 'dependente', 'dependentes', 'idade'],
   'amigos': ['amigo', 'amigos', 'familiar', 'familiares', 'parente', 'parentes', 'terceiro', 'terceiros']
 };
@@ -104,8 +101,8 @@ function extractEntities(text) {
 }
 
 // 3. Algoritmo de busca precisa por Relevância Semântica e Filtro de Assunto
-function searchFaq(userQuery) {
-  const faqList = getFaqData();
+async function searchFaq(userQuery, customList = null) {
+  const faqList = customList || await getFaqData();
   if (faqList.length === 0) {
     return {
       found: false,
@@ -205,7 +202,7 @@ function searchFaq(userQuery) {
     const currentModulo = bestMatch.modulo || '';
     suggestions = faqList
       .filter(i => i.pergunta !== bestMatch.pergunta)
-      .filter(i => i.modulo === currentModulo) // apenas do mesmo assunto
+      .filter(i => i.modulo === currentModulo)
       .slice(0, 2)
       .map(i => i.pergunta);
   } else {
@@ -238,7 +235,8 @@ function searchFaq(userQuery) {
 // 📡 ROTAS DA API REST PARA O APP MOBILE
 // ==========================================
 
-// 1. Endpoint principal do Chatbot / Consulta (com delay suave para resposta humanizada)
+// 1. Endpoint principal do Chatbot / Consulta
+// https://chat.enstihmp.com.br/api/chat
 app.post('/api/chat', async (req, res) => {
   const { message } = req.body;
 
@@ -246,59 +244,129 @@ app.post('/api/chat', async (req, res) => {
     return res.status(400).json({ error: 'A mensagem do usuário é obrigatória.' });
   }
 
-  // Delay natural de 800ms
-  await new Promise(resolve => setTimeout(resolve, 800));
+  // Delay suave de 600ms para resposta natural
+  await new Promise(resolve => setTimeout(resolve, 600));
 
-  const result = searchFaq(message);
+  const result = await searchFaq(message);
   return res.json(result);
 });
 
-// 2. Endpoint para listar todas as perguntas do FAQ
-app.get('/api/faq', (req, res) => {
-  const faqData = getFaqData();
-  res.json({
-    total: faqData.length,
-    faq: faqData
-  });
+// 2. Endpoint para listar perguntas do FAQ (suporta filtro opcional ?modulo=...)
+// https://chat.enstihmp.com.br/api/faq
+app.get('/api/faq', async (req, res) => {
+  try {
+    const { modulo } = req.query;
+    let list = await getFaqData();
+    if (modulo) {
+      list = list.filter(item => (item.modulo || '').toLowerCase() === modulo.toLowerCase());
+    }
+    res.json({
+      total: list.length,
+      faq: list
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao consultar o FAQ.' });
+  }
 });
 
-// 3. Endpoint para buscar diretamente via GET
+// 3. Endpoint de Dúvidas em Destaque (conforme especificado na nova arquitetura)
+// https://chat.enstihmp.com.br/api/faq/destaques
+app.get('/api/faq/destaques', async (req, res) => {
+  try {
+    const destaques = await getDestaques();
+    res.json({
+      total: destaques.length,
+      destaques
+    });
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao buscar dúvidas em destaque.' });
+  }
+});
+
+// 4. Endpoint de Perguntas Rápidas (Chips de Sugestão - compatibilidade com o front)
+app.get('/api/faq/quick-questions', async (req, res) => {
+  try {
+    const featured = await getDestaques();
+    const all = featured.length > 0 ? featured : await getFaqData();
+    const quickQuestions = all.slice(0, 4).map(item => item.pergunta);
+    res.json({ questions: quickQuestions });
+  } catch (err) {
+    res.status(500).json({ questions: [] });
+  }
+});
+
+// 5. Endpoint para obter Módulos do FAQ
+// https://chat.enstihmp.com.br/api/faq/modulos
+app.get(['/api/faq/modulos', '/api/faq/categories'], async (req, res) => {
+  try {
+    const modulos = await getModulos();
+    res.json({ modulos });
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao obter módulos.' });
+  }
+});
+
+// 6. Endpoint para buscar diretamente via GET
+// https://chat.enstihmp.com.br/api/faq/search?q=...
 app.get('/api/faq/search', async (req, res) => {
   const query = req.query.q || '';
   if (!query) {
     return res.status(400).json({ error: 'Parâmetro de busca "q" é obrigatório.' });
   }
 
-  await new Promise(resolve => setTimeout(resolve, 400));
-  const result = searchFaq(query);
+  await new Promise(resolve => setTimeout(resolve, 300));
+  const result = await searchFaq(query);
   res.json(result);
 });
 
-// 4. Endpoint para obter Módulos do FAQ
-app.get(['/api/faq/modulos', '/api/faq/categories'], (req, res) => {
-  const faqData = getFaqData();
-  const modulosMap = {};
-
-  faqData.forEach(item => {
-    const mod = item.modulo || 'Geral';
-    modulosMap[mod] = (modulosMap[mod] || 0) + 1;
-  });
-
-  const modulos = Object.keys(modulosMap).map(mod => ({
-    name: mod,
-    count: modulosMap[mod]
-  }));
-
-  res.json({ modulos });
+// 7. Endpoints Administrativos para gerenciamento no MySQL
+// Criar nova pergunta
+app.post('/api/admin/faq', async (req, res) => {
+  const { modulo, pergunta, resposta, destaque } = req.body;
+  if (!modulo || !pergunta || !resposta) {
+    return res.status(400).json({ error: 'Os campos "modulo", "pergunta" e "resposta" são obrigatórios.' });
+  }
+  try {
+    const item = await createFaqItem({ modulo, pergunta, resposta, destaque });
+    res.status(201).json({ message: 'Item criado com sucesso!', item });
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao criar item no banco de dados.', details: err.message });
+  }
 });
 
-// 5. Endpoint de Perguntas Rápidas (Chips de Sugestão)
-app.get('/api/faq/quick-questions', (req, res) => {
-  const faqData = getFaqData();
-  const featured = faqData.filter(item => item.destaque === true);
-  const selected = featured.length > 0 ? featured : faqData.slice(0, 4);
-  const quickQuestions = selected.slice(0, 4).map(item => item.pergunta);
-  res.json({ questions: quickQuestions });
+// Atualizar pergunta existente
+app.put('/api/admin/faq/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const success = await updateFaqItem(id, req.body);
+    if (!success) {
+      return res.status(400).json({ error: 'Nenhum dado informado para atualização.' });
+    }
+    res.json({ message: 'Item atualizado com sucesso!' });
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao atualizar item.', details: err.message });
+  }
+});
+
+// Desativar ou deletar pergunta
+app.delete('/api/admin/faq/:id', async (req, res) => {
+  const { id } = req.params;
+  const hard = req.query.hard === 'true';
+  try {
+    await deleteFaqItem(id, hard);
+    res.json({ message: hard ? 'Item excluído permanentemente.' : 'Item desativado com sucesso.' });
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao excluir item.', details: err.message });
+  }
+});
+
+// Health check para Google Cloud Run / Load Balancers
+app.get(['/health', '/api/health'], (req, res) => {
+  res.json({
+    status: 'UP',
+    service: 'chatbot-backend',
+    timestamp: new Date().toISOString()
+  });
 });
 
 // ==========================================
@@ -397,7 +465,6 @@ app.get('/', (req, res) => {
     const userInput = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
 
-    // Carrega perguntas rápidas da API
     fetch('/api/faq/quick-questions')
       .then(res => res.json())
       .then(data => {
@@ -441,7 +508,6 @@ app.get('/', (req, res) => {
       bubble.innerHTML = formatText(text);
       row.appendChild(bubble);
 
-      // Adiciona sugestões relacionadas do mesmo assunto
       if (suggestions && suggestions.length > 0) {
         const suggContainer = document.createElement('div');
         suggContainer.className = 'msg-suggestions';
@@ -514,6 +580,7 @@ app.get('/', (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`🚀 Servidor de FAQ/Manual rodando em http://localhost:${PORT}`);
+  await testDbConnection();
 });

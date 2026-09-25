@@ -1,8 +1,30 @@
-# 📖 Manual & FAQ Backend - Node.js (API para App Mobile)
+# 📖 Chatbot & FAQ Backend - Node.js + MySQL (Google Cloud)
 
-Servidor de consulta inteligente do **Manual do Aplicativo e FAQ**, desenvolvido em **Node.js** com **Express** e ES Modules.
+Serviço de autoatendimento e FAQ inteligente para o aplicativo mobile e web, desenvolvido em **Node.js + Express** e persistência de dados em **MySQL**.
 
-Este backend atua como a base de conhecimento do aplicativo mobile, respondendo dúvidas dos usuários com busca semântica/palavras-chave em tempo real, fornecendo respostas estruturadas por **Módulos** e sugestões de perguntas relacionadas (`chips`).
+A arquitetura foi desenhada para operar de forma desacoplada da API principal do clube (Java 8), hospedada no **Google Cloud Platform (GCP)** sob o subdomínio dedicado:
+👉 **`https://chat.enstihmp.com.br`**
+
+---
+
+## 🏛️ Visão Geral da Arquitetura
+
+```
+                         enstihmp.com.br
+                                |
+         +----------------------+----------------------+
+         |                                             |
+   API PRINCIPAL (Legado)                       CHATBOT & FAQ (Novo)
+         |                                             |
+https://enstihmp.com.br/clubcom/ws             https://chat.enstihmp.com.br
+         |                                             |
+       Java 8                               Google Cloud (Cloud Run / VM)
+  • /login                                  Node.js (Express)
+  • /eventos                                           |
+  • /ingressos                                  MySQL Database
+                                            (Tabela: faq - modulo,
+                                             pergunta, resposta, destaque)
+```
 
 ---
 
@@ -10,102 +32,116 @@ Este backend atua como a base de conhecimento do aplicativo mobile, respondendo 
 
 ```
 chatbot-backend/
-├── .env                     # Porta da aplicação (PORT=3000)
-├── faq.json                 # Base de dados com todas as perguntas, respostas e módulos
-├── package.json             # Configuração e dependências do Node.js
-├── server.js                # Servidor Express, algoritmo de busca no FAQ e UI de testes
-└── README.md                # Documentação técnica para os desenvolvedores mobile
+├── .env                  # Configuração de portas e credenciais do MySQL
+├── .env.example          # Modelo de variáveis de ambiente
+├── db.js                 # Pool de conexão com o banco MySQL (mysql2/promise)
+├── faqService.js         # Camada de regras, consultas MySQL e fallback
+├── schema.sql            # Script DDL para criar a tabela `faq` no MySQL
+├── migrate-faq.js        # Script de migração automática do faq.json para o MySQL
+├── faq.json              # Base legada / backup inicial dos dados
+├── package.json          # Dependências e scripts do projeto
+├── server.js             # API REST, motor de scoring inteligente e UI de testes
+└── README.md             # Esta documentação
 ```
 
 ---
 
-## 🚀 Como Rodar o Servidor
+## 🗄️ Estrutura da Tabela no MySQL (`faq`)
 
-1. **Instalar as dependências:**
-   ```bash
-   npm install
-   ```
+O banco de dados utiliza a tabela `faq` com os seguintes campos:
 
-2. **Iniciar em modo de desenvolvimento (com auto-reload):**
-   ```bash
-   npm run dev
-   ```
-
-3. **Iniciar em modo produção:**
-   ```bash
-   npm start
-   ```
-
-O servidor estará rodando em: 👉 **http://localhost:3000**
+| Campo | Tipo | Descrição |
+| :--- | :--- | :--- |
+| `id` | `INT AUTO_INCREMENT` | Identificador único (Chave Primária) |
+| `modulo` | `VARCHAR(100)` | Assunto/Categoria (ex: Perfil e Acesso, Ingressos) |
+| `pergunta` | `VARCHAR(255)` | Pergunta ou dúvida do associado |
+| `resposta` | `TEXT` | Instruções passo a passo da resposta |
+| `destaque` | `BOOLEAN` | `1` para chips em destaque na tela inicial, `0` normal |
+| `ativo` | `BOOLEAN` | `1` ativo para exibição, `0` oculto/desativado |
+| `created_at` | `TIMESTAMP` | Data de criação |
+| `updated_at` | `TIMESTAMP` | Data da última alteração |
 
 ---
 
-## 📡 Guia da API para o Desenvolvedor Mobile (React Native / Flutter / Android / iOS)
+## 🚀 Como Configurar e Rodar
 
-### 1. 💬 Enviar Pergunta do Usuário (Chatbot / Consulta)
-Envia a dúvida digitada pelo usuário e retorna a resposta encontrada com sugestões inteligentes de continuidade.
+### 1. Pré-requisitos
+- Node.js instalado (v18 ou superior)
+- MySQL Server ativo (local ou no Google Cloud SQL)
 
+### 2. Configurar o `.env`
+Crie ou ajuste seu arquivo `.env` com os dados do banco:
+```env
+PORT=3000
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=sua_senha
+DB_NAME=chatbot_db
+```
+
+### 3. Criar o Banco e Migrar os Dados
+Execute a migração para criar a tabela e importar automaticamente todas as perguntas do `faq.json` para o MySQL:
+```bash
+npm run migrate
+```
+*(Caso queira limpar e recarregar os dados, use `node migrate-faq.js --force`)*.
+
+### 4. Iniciar o Servidor
+```bash
+# Modo de desenvolvimento com auto-reload:
+npm run dev
+
+# Ou modo produção:
+npm start
+```
+Acesse a interface de testes no navegador: 👉 **http://localhost:3000**
+
+---
+
+## 📡 Endpoints da API (`https://chat.enstihmp.com.br`)
+
+### 1. 💬 Consulta ao Chatbot
+Retorna a resposta mais assertiva e sugestões inteligentes com base na pergunta digitada:
 - **Método:** `POST`
-- **URL:** `http://localhost:3000/api/chat`
-- **Headers:** `Content-Type: application/json`
-- **Request Body:**
+- **Rota:** `/api/chat`
+- **Body:**
   ```json
   {
-    "message": "como alterar o telefone cadastrado"
+    "message": "como alterar meu telefone cadastrado"
   }
   ```
-- **Response (200 OK):**
+- **Resposta (200 OK):**
   ```json
   {
     "found": true,
-    "score": 30,
+    "score": 90,
     "matchedQuestion": "Como alterar o telefone do cadastro?",
-    "modulo": "Conta e Acesso",
+    "modulo": "Perfil e Acesso",
     "reply": "Vá até o Perfil no canto superior direito do aplicativo e clique em \"Meus Dados\".",
     "suggestions": [
-      "Como redefinir minha senha?",
       "Como alterar meus dados cadastrais?",
-      "Não consigo alterar o meu cpf?"
-    ]
-  }
-  ```
-  *(Se nenhuma resposta for encontrada, `found` será `false`, retornando uma mensagem amigável e as dúvidas mais frequentes em `suggestions`).*
-
----
-
-### 2. ⚡ Obter Dúvidas Frequentes (Chips Iniciais)
-Ideal para renderizar os botões de perguntas rápidas quando o usuário abre a tela do assistente no app.
-
-- **Método:** `GET`
-- **URL:** `http://localhost:3000/api/faq/quick-questions`
-- **Response (200 OK):**
-  ```json
-  {
-    "questions": [
-      "Como redefinir minha senha?",
-      "Como alterar meus dados cadastrais?",
-      "Como alterar o telefone do cadastro?",
-      "Como eu vejo as notificações?"
+      "Como alterar ou ver o meu e-mail cadastrado?"
     ]
   }
   ```
 
 ---
 
-### 3. 📚 Listar Todas as Perguntas (Tela do Manual / Central de Ajuda)
-Retorna todas as perguntas e respostas cadastradas para compor uma lista ou sanfona (accordion) de ajuda.
-
+### 2. ⭐ Dúvidas em Destaque
+Retorna exclusivamente as perguntas marcadas com `destaque = true` (utilizado para os botões/chips iniciais de acesso rápido):
 - **Método:** `GET`
-- **URL:** `http://localhost:3000/api/faq`
-- **Response (200 OK):**
+- **Rota:** `/api/faq/destaques`
+- **Resposta (200 OK):**
   ```json
   {
-    "total": 13,
-    "faq": [
+    "total": 5,
+    "destaques": [
       {
-        "modulo": "Conta e Acesso",
+        "id": 1,
+        "modulo": "Perfil e Acesso",
         "pergunta": "Como redefinir minha senha?",
-        "resposta": "Acesse a tela de Login. Coloque o seu E-mail...",
+        "resposta": "Acesse a tela de Login, informe seu e-mail...",
         "destaque": true
       }
     ]
@@ -114,48 +150,44 @@ Retorna todas as perguntas e respostas cadastradas para compor uma lista ou sanf
 
 ---
 
-### 4. 🏷️ Obter Módulos do FAQ
-Retorna os módulos e a quantidade de perguntas cadastradas em cada um (ex: "Conta e Acesso", "Ingressos", "Notificações", "Sócios e Associação").
-
+### 3. 📚 Listar Todas as Perguntas
+Retorna todas as dúvidas ativas do banco, podendo filtrar por módulo via query string:
 - **Método:** `GET`
-- **URL:** `http://localhost:3000/api/faq/modulos`
-- **Response (200 OK):**
-  ```json
-  {
-    "modulos": [
-      { "name": "Conta e Acesso", "count": 5 },
-      { "name": "Notificações", "count": 2 },
-      { "name": "Ingressos", "count": 2 },
-      { "name": "Sócios e Associação", "count": 4 }
-    ]
-  }
-  ```
+- **Rota:** `/api/faq` ou `/api/faq?modulo=Ingressos`
 
 ---
 
-### 5. 🔍 Busca Direta por Termo (Query Param)
+### 4. 🏷️ Listar Módulos / Categorias
+Retorna todos os módulos cadastrados e a quantidade de perguntas em cada um:
 - **Método:** `GET`
-- **URL:** `http://localhost:3000/api/faq/search?q=notificacoes`
+- **Rota:** `/api/faq/modulos`
 
 ---
 
-## ✏️ Como Adicionar ou Modificar Perguntas no FAQ
-
-Para cadastrar novas dúvidas ou ajustar respostas do manual, basta editar o arquivo [`faq.json`](file:///c:/Users/sboliveira/Desktop/chatbot-backend/faq.json):
-
-```json
-{
-  "modulo": "Nome do Módulo",
-  "pergunta": "Pergunta que o usuário faz?",
-  "resposta": "Explicação passo a passo do aplicativo.",
-  "destaque": true
-}
-```
-> **Nota:** As alterações no `faq.json` passam a valer imediatamente na próxima consulta, sem necessidade de reiniciar o servidor!
+### 5. 🛠️ Endpoints Administrativos (Gestão do FAQ no MySQL)
+- `POST /api/admin/faq`: Cadastrar nova dúvida (`{ modulo, pergunta, resposta, destaque }`)
+- `PUT /api/admin/faq/:id`: Atualizar dados ou alternar destaque de uma dúvida existente
+- `DELETE /api/admin/faq/:id`: Desativar dúvida (`?hard=true` para exclusão definitiva)
+- `GET /health`: Health-check para o monitor do Google Cloud
 
 ---
 
-## 🖥️ Tela Visual de Testes
+## ☁️ Hospedagem no Google Cloud Platform (GCP)
 
-Você pode testar a interface e a lógica a qualquer momento abrindo no seu navegador:
-👉 **`http://localhost:3000`**
+Quando a conta do Google Cloud estiver ativa:
+
+1. **Banco de Dados (Cloud SQL)**:
+   - Crie uma instância de **Cloud SQL for MySQL** (ex: `db-f1-micro` ou `db-custom`).
+   - Crie a base de dados `chatbot_db` e o usuário da aplicação.
+   - Execute o script [schema.sql](file:///c:/Users/sboliveira/Desktop/chatbot-backend/schema.sql).
+
+2. **Backend (Google Cloud Run)**:
+   - Crie o container da aplicação e faça o deploy no **Cloud Run**.
+   - Conecte o Cloud Run à instância do Cloud SQL através do conector nativo do Cloud SQL.
+   - Configure as variáveis de ambiente (`DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`).
+
+3. **Subdomínio (`chat.enstihmp.com.br`)**:
+   - No Cloud Run, acesse **Mapeamentos de Domínio Personalizado** (Custom Domains).
+   - Adicione `chat.enstihmp.com.br`.
+   - Adicione o registro `CNAME` gerado na zona de DNS do domínio `enstihmp.com.br`.
+   - O Google Cloud provisiona o certificado SSL (HTTPS) automaticamente.

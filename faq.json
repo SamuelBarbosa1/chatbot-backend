@@ -1,0 +1,140 @@
+[
+  {
+    "modulo": "Perfil e Acesso",
+    "pergunta": "Como redefinir minha senha?",
+    "resposta": "Acesse a tela de Login. Coloque o seu E-mail, clique em Iniciar e depois em \"Esqueci minha senha\". Siga as instruções enviadas para o seu e-mail cadastrado.",
+    "destaque": true
+  },
+  {
+    "modulo": "Perfil e Acesso",
+    "pergunta": "O que significa Você é associado/Colabadorar?",
+    "resposta": "Para ser um associado ou colaborador, você precisa se autenticar ser um associado da associação",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Acesso",
+    "pergunta": "Como alterar meus dados cadastrais?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em \"Meus Dados\". Lá você pode alterar seu nome, telefone, e-mail e endereço.",
+    "destaque": true
+  },
+  {
+    "modulo": "Perfil e Acesso",
+    "pergunta": "Como alterar o telefone do cadastro?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em \"Meus Dados\".",
+    "destaque": true
+  },
+  {
+    "modulo": "Perfil e Acesso",
+    "pergunta": "Como alterar ou ver o meu e-mail cadastrado?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em \"Meus Dados\". Lá você pode visualizar e atualizar o seu e-mail.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Acesso",
+    "pergunta": "Não consigo alterar o meu cpf?",
+    "resposta": "Para alterar ou regularizar seu CPF, vá até o Perfil no canto superior direito do aplicativo e clique em \"Meus Dados\". Caso necessite de alteração cadastral avançada, consulte a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Acesso",
+    "pergunta": "Meus amigos ou familiares podem se cadastrar no aplicativo?",
+    "resposta": "Sim! Amigos e familiares podem se cadastrar normalmente. Se forem sócios, terão todos os benefícios de associado vinculados à sua matrícula; se forem não associados, terão acesso aos recursos e compras gerais.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Acesso",
+    "pergunta": "Posso cadastrar um responsável para minha conta?",
+    "resposta": "Sim! Caso você seja menor de 18 anos ou tenha algum impedimento, um responsável legal pode ser cadastrado para sua conta.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Acesso",
+    "pergunta": "Preciso ser sócio para comprar os ingressos e ir para algum evento?",
+    "resposta": "Não, não precisa ser sócio do clube para comprar os ingressos e ir para algum evento. Pode comprar para amigos e familiares também.",
+    "destaque": false
+  },
+  {
+    "modulo": "Notificações",
+    "pergunta": "Como eu vejo as notificações?",
+    "resposta": "Para ver as notificações recebidas, vá até o Perfil no canto superior direito do aplicativo e clique em \"Notificações\".",
+    "destaque": true
+  },
+  {
+    "modulo": "Notificações",
+    "pergunta": "Como eu desativo as notificações do aplicativo?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo, clique em \"Receber Alertas\" e desmarque a opção de receber notificações.",
+    "destaque": false
+  },
+  {
+    "modulo": "Ingressos",
+    "pergunta": "Como eu compro os ingressos para o show?",
+    "resposta": "Para comprar os ingressos para o show, vá até a aba Início e selecione o show desejado, clique no botão de Comprar, selecione as opções e no final escolha o método de pagamento.",
+    "destaque": true
+  },
+  {
+    "modulo": "Ingressos",
+    "pergunta": "Como eu vejo os ingressos que eu comprei?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Meus Ingressos'.",
+    "destaque": true
+  },
+  {
+    "modulo": "Ingressos",
+    "pergunta": "Como vejo meus Ingressos Anteriores?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Ingressos Anteriores'.",
+    "destaque": false
+  },
+  {
+    "modulo": "Ingressos",
+    "pergunta": "Meus ingressos não chegaram?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Meus Ingressos'. Verifique também seu e-mail cadastrado ou consulte a secretaria do clube.",
+    "destaque": false
+  },
+  {
+    "modulo": "Ingressos",
+    "pergunta": "Posso usar o ingresso de outra pessoa?",
+    "resposta": "Não, cada ingresso é individual para cada conta. Somente o titular do ingresso poderá entrar no evento.",
+    "destaque": false
+  },
+  {
+    "modulo": "Ingressos",
+    "pergunta": "Posso transferir meu ingresso para uma outra pessoa?",
+    "resposta": "Sim, você pode transferir seu ingresso para outra pessoa. Vá  Até ingressos, selecione o ingresso desejado e clique em 'Transferir.",
+    "destaque": false
+  },
+  {
+    "modulo": "Ingressos",
+    "pergunta": "Não consigo acessar o meu ingresso?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Meus Ingressos'.",
+    "destaque": false
+  },
+  {
+    "modulo": "Ingressos",
+    "pergunta": "Comprei um ingresso mas ele não aparece na minha carteirinha?",
+    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Meus Ingressos'. Se o ingresso não estiver aparecendo, entre em contato com a secretaria do clube.",
+    "destaque": false
+  },
+  {
+    "modulo": "Ingressos",
+    "pergunta": "Vou receber meu ingresso por e-mail?",
+    "resposta": "Sim! Os ingressos são enviados para o e-mail cadastrado na conta após a confirmação do pagamento.",
+    "destaque": false
+  },
+  {
+    "modulo": "Ingressos",
+    "pergunta": "Onde vejo a localização do meu evento?",
+    "resposta": "Para ver a localização do evento, acesse a aba Início, clique no evento desejado e veja os detalhes do endereço e informações do local.",
+    "destaque": false
+  },
+  {
+    "modulo": "Ingressos",
+    "pergunta": "Quero saber mais das informações do evento",
+    "resposta": "Para saber das informações dos eventos, selecione o evento, lá nostará o local, descrição, atrações e o contato.",
+    "destaque": false
+  },
+  {
+    "modulo": "Inicio",
+    "pergunta": "O que significa esse Vive à sua maneira?",
+    "resposta": "Significa quais shows estão cadastros em cada evento",
+    "destaque": false
+  }
+]

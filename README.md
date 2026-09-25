@@ -1,6 +1,8 @@
-# ☕ Chatbot Backend - Java 8 & Apache Tomcat 9
+# 📖 Manual & FAQ Backend - Node.js (API para App Mobile)
 
-Backend do Assistente Virtual integrado à **API oficial do Google Gemini**, desenvolvido para **Java 8 (1.8)** e empacotado como aplicação Web padrão (**WAR**) para implantação no **Apache Tomcat 9**.
+Servidor de consulta inteligente do **Manual do Aplicativo e FAQ**, desenvolvido em **Node.js** com **Express** e ES Modules.
+
+Este backend atua como a base de conhecimento do aplicativo mobile, respondendo dúvidas dos usuários com busca semântica/palavras-chave em tempo real, fornecendo respostas estruturadas por **Módulos** e sugestões de perguntas relacionadas (`chips`).
 
 ---
 
@@ -8,112 +10,152 @@ Backend do Assistente Virtual integrado à **API oficial do Google Gemini**, des
 
 ```
 chatbot-backend/
-├── pom.xml                               # Configuração Maven (Java 1.8 + WAR)
-└── src/
-    └── main/
-        ├── java/
-        │   └── com/chatbot/
-        │       ├── model/
-        │       │   └── FaqItem.java            # Modelo de dados do FAQ
-        │       ├── service/
-        │       │   └── GeminiService.java      # Integração HTTP REST com o Google Gemini
-        │       ├── servlet/
-        │       │   ├── ChatServlet.java        # Endpoint POST /api/chat
-        │       │   └── QuickQuestionsServlet.java # Endpoint GET /api/faq/quick-questions
-        │       ├── filter/
-        │       │   └── CorsFilter.java         # Filtro CORS para permitir React Native / Web
-        │       ├── util/
-        │       │   ├── ConfigLoader.java       # Carregador de configurações e variáveis de ambiente
-        │       │   └── FaqLoader.java          # Carregador dinâmico do faq.json
-        │       └── DevServer.java              # Servidor local para testes rápidos
-        ├── resources/
-        │   ├── faq.json                        # Base de conhecimento de perguntas e respostas
-        │   └── application.properties          # Chave da API e configurações do Gemini
-        └── webapp/
-            ├── index.html                      # Interface visual interativa para testes no navegador
-            └── WEB-INF/
-                └── web.xml                     # Mapeamento de Servlets para o Tomcat 9
+├── .env                     # Porta da aplicação (PORT=3000)
+├── faq.json                 # Base de dados com todas as perguntas, respostas e módulos
+├── package.json             # Configuração e dependências do Node.js
+├── server.js                # Servidor Express, algoritmo de busca no FAQ e UI de testes
+└── README.md                # Documentação técnica para os desenvolvedores mobile
 ```
 
 ---
 
-## 🚀 Como Gerar o Pacote `.war` (Maven)
+## 🚀 Como Rodar o Servidor
 
-No terminal da pasta do projeto, execute:
+1. **Instalar as dependências:**
+   ```bash
+   npm install
+   ```
 
-```bash
-mvn clean package
-```
+2. **Iniciar em modo de desenvolvimento (com auto-reload):**
+   ```bash
+   npm run dev
+   ```
 
-Isso compilará o código em **Java 8** e gerará o arquivo:
-👉 `target/chatbot.war`
+3. **Iniciar em modo produção:**
+   ```bash
+   npm start
+   ```
+
+O servidor estará rodando em: 👉 **http://localhost:3000**
 
 ---
 
-## 🚢 Como Fazer o Deploy no Apache Tomcat 9
+## 📡 Guia da API para o Desenvolvedor Mobile (React Native / Flutter / Android / iOS)
 
-1. Baixe ou abra a pasta de instalação do seu **Apache Tomcat 9**.
-2. Copie o arquivo `target/chatbot.war` para a pasta:
-   ```
-   apache-tomcat-9.x.x/webapps/
-   ```
-3. Inicie o Tomcat:
-   - **No Windows:** execute `bin/startup.bat`
-   - **No Linux/Mac:** execute `bin/startup.sh`
-4. O Tomcat fará o deploy automático da aplicação na rota `/chatbot`.
+### 1. 💬 Enviar Pergunta do Usuário (Chatbot / Consulta)
+Envia a dúvida digitada pelo usuário e retorna a resposta encontrada com sugestões inteligentes de continuidade.
+
+- **Método:** `POST`
+- **URL:** `http://localhost:3000/api/chat`
+- **Headers:** `Content-Type: application/json`
+- **Request Body:**
+  ```json
+  {
+    "message": "como alterar o telefone cadastrado"
+  }
+  ```
+- **Response (200 OK):**
+  ```json
+  {
+    "found": true,
+    "score": 30,
+    "matchedQuestion": "Como alterar o telefone do cadastro?",
+    "modulo": "Conta e Acesso",
+    "reply": "Vá até o Perfil no canto superior direito do aplicativo e clique em \"Meus Dados\".",
+    "suggestions": [
+      "Como redefinir minha senha?",
+      "Como alterar meus dados cadastrais?",
+      "Não consigo alterar o meu cpf?"
+    ]
+  }
+  ```
+  *(Se nenhuma resposta for encontrada, `found` será `false`, retornando uma mensagem amigável e as dúvidas mais frequentes em `suggestions`).*
 
 ---
 
-## 📡 Endpoints da API
+### 2. ⚡ Obter Dúvidas Frequentes (Chips Iniciais)
+Ideal para renderizar os botões de perguntas rápidas quando o usuário abre a tela do assistente no app.
 
-Quando o Tomcat estiver rodando:
-
-### 1. 💬 Enviar Mensagem no Chat
-- **URL:** `POST http://localhost:8080/chatbot/api/chat`
-- **Header:** `Content-Type: application/json`
-- **Body:**
-  ```json
-  {
-    "message": "Como emitir a segunda via do boleto?"
-  }
-  ```
-- **Resposta:**
-  ```json
-  {
-    "reply": "Olá! Para emitir a segunda via do boleto, navegue até a aba **Financeiro** > **Meus Boletos**..."
-  }
-  ```
-
-### 2. 📋 Obter Perguntas Rápidas (Chips)
-- **URL:** `GET http://localhost:8080/chatbot/api/faq/quick-questions`
-- **Resposta:**
+- **Método:** `GET`
+- **URL:** `http://localhost:3000/api/faq/quick-questions`
+- **Response (200 OK):**
   ```json
   {
     "questions": [
       "Como redefinir minha senha?",
       "Como alterar meus dados cadastrais?",
-      "Como emitir a segunda via do boleto?",
-      "Qual o horário de atendimento do suporte humano?"
+      "Como alterar o telefone do cadastro?",
+      "Como eu vejo as notificações?"
     ]
   }
   ```
 
-### 3. 🖥️ Tela Visual de Teste no Navegador
-- **URL:** `http://localhost:8080/chatbot/`
+---
+
+### 3. 📚 Listar Todas as Perguntas (Tela do Manual / Central de Ajuda)
+Retorna todas as perguntas e respostas cadastradas para compor uma lista ou sanfona (accordion) de ajuda.
+
+- **Método:** `GET`
+- **URL:** `http://localhost:3000/api/faq`
+- **Response (200 OK):**
+  ```json
+  {
+    "total": 13,
+    "faq": [
+      {
+        "modulo": "Conta e Acesso",
+        "pergunta": "Como redefinir minha senha?",
+        "resposta": "Acesse a tela de Login. Coloque o seu E-mail...",
+        "destaque": true
+      }
+    ]
+  }
+  ```
 
 ---
 
-## ⚙️ Configuração da Chave da Empresa
+### 4. 🏷️ Obter Módulos do FAQ
+Retorna os módulos e a quantidade de perguntas cadastradas em cada um (ex: "Conta e Acesso", "Ingressos", "Notificações", "Sócios e Associação").
 
-Você pode configurar a chave da API do Gemini de duas formas:
+- **Método:** `GET`
+- **URL:** `http://localhost:3000/api/faq/modulos`
+- **Response (200 OK):**
+  ```json
+  {
+    "modulos": [
+      { "name": "Conta e Acesso", "count": 5 },
+      { "name": "Notificações", "count": 2 },
+      { "name": "Ingressos", "count": 2 },
+      { "name": "Sócios e Associação", "count": 4 }
+    ]
+  }
+  ```
 
-1. **No arquivo [application.properties](src/main/resources/application.properties):**
-   ```properties
-   gemini.api.key=SUA_CHAVE_AQUI
-   ```
+---
 
-2. **Ou por Variável de Ambiente no Servidor:**
-   ```bash
-   GEMINI_API_KEY=SUA_CHAVE_AQUI
-   ```
-   *(A variável de ambiente tem prioridade sobre o application.properties, ideal para servidores de produção)*.
+### 5. 🔍 Busca Direta por Termo (Query Param)
+- **Método:** `GET`
+- **URL:** `http://localhost:3000/api/faq/search?q=notificacoes`
+
+---
+
+## ✏️ Como Adicionar ou Modificar Perguntas no FAQ
+
+Para cadastrar novas dúvidas ou ajustar respostas do manual, basta editar o arquivo [`faq.json`](file:///c:/Users/sboliveira/Desktop/chatbot-backend/faq.json):
+
+```json
+{
+  "modulo": "Nome do Módulo",
+  "pergunta": "Pergunta que o usuário faz?",
+  "resposta": "Explicação passo a passo do aplicativo.",
+  "destaque": true
+}
+```
+> **Nota:** As alterações no `faq.json` passam a valer imediatamente na próxima consulta, sem necessidade de reiniciar o servidor!
+
+---
+
+## 🖥️ Tela Visual de Testes
+
+Você pode testar a interface e a lógica a qualquer momento abrindo no seu navegador:
+👉 **`http://localhost:3000`**

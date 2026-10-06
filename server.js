@@ -49,23 +49,37 @@ const SUBJECT_MAP = {
   'senha': ['senha', 'senhas', 'password', 'pin', 'esqueci', 'recuperar', 'redefinir', 'redefino'],
   'telefone': ['telefone', 'telefones', 'celular', 'celulares', 'fone', 'contato', 'numero'],
   'cpf': ['cpf', 'documento', 'identidade'],
-  'dados': ['dados', 'cadastro', 'cadastrais', 'cadastrado', 'cadastrar', 'perfil', 'nome', 'endereco'],
+  'dados': ['dados', 'cadastro', 'cadastrais', 'cadastrado', 'cadastrar', 'perfil', 'nome', 'nascimento', 'aniversario'],
   'notificacao': ['notificacao', 'notificacoes', 'alerta', 'alertas', 'aviso', 'avisos', 'push', 'mensagens'],
   'ingresso': ['ingresso', 'ingressos', 'entrada', 'entradas', 'bilhete', 'bilhetes', 'convite', 'convites', 'ticket', 'tickets', 'carteirinha'],
-  'evento': ['show', 'shows', 'evento', 'eventos', 'festa', 'festas', 'localizacao', 'local', 'endereco', 'lugar', 'mapa', 'viva', 'maneira'],
-  'socio': ['socio', 'socios', 'associado', 'associados', 'associacao', 'clube', 'matricula', 'filiado', 'titular', 'colaborador'],
-  'responsavel': ['responsavel', 'responsaveis', 'menor', 'filho', 'filhos', 'dependente', 'dependentes', 'idade'],
-  'amigos': ['amigo', 'amigos', 'familiar', 'familiares', 'parente', 'parentes', 'terceiro', 'terceiros']
+  'evento': ['show', 'shows', 'evento', 'eventos', 'festa', 'festas', 'viva', 'maneira', 'jogos', 'jogo', 'partida', 'partidas', 'cursos', 'workshops', 'infantil', 'esportes'],
+  'socio': ['socio', 'socios', 'associado', 'associados', 'associacao', 'clube', 'matricula', 'filiado', 'titular', 'colaborador', 'desconto'],
+  'responsavel': ['responsavel', 'responsaveis', 'menor', 'filho', 'filhos', 'dependente', 'dependentes', 'idade', 'crianca', 'criancas'],
+  'amigos': ['amigo', 'amigos', 'familiar', 'familiares', 'parente', 'parentes', 'terceiro', 'terceiros'],
+  'reembolso': ['reembolso', 'estorno', 'estornar', 'devolucao', 'devolver', 'dinheiro', 'ressarcimento'],
+  'cancelamento': ['cancelamento', 'cancelar', 'cancelo', 'desistir', 'anular', 'cancelado', 'cancelados', 'prazo', 'dias'],
+  'pagamento': ['pagamento', 'pagamentos', 'pagar', 'pago', 'pix', 'cartao', 'credito', 'debito', 'parcelamento', 'parcelar', 'parcelas', 'vezes', 'meses', 'fatura'],
+  'qrcode': ['qrcode', 'qr', 'code', 'codigo', 'barras', 'validar', 'leitura', 'portaria', 'catraca'],
+  'suporte': ['suporte', 'secretaria', 'atendente', 'humano', 'telefone', 'whatsapp', 'fale', 'duvida', 'ajuda'],
+  'impressao': ['imprimir', 'impressao', 'papel', 'impresso', 'offline', 'internet', 'print'],
+  'lote': ['lote', 'lotes', 'disponivel', 'disponiveis', 'indisponivel', 'esgotado', 'venda', 'vendas', 'abertura'],
+  'assento': ['assento', 'assentos', 'cadeira', 'cadeiras', 'lugar', 'lugares', 'mapa', 'arquibancada', 'pista', 'setor', 'setores', 'mesa', 'mesas', 'marcar'],
+  'regras': ['regra', 'regras', 'observacao', 'observacoes', 'proibido', 'permitido', 'aviso', 'avisos', 'normas', 'levar'],
+  'localizacao': ['cidade', 'cidades', 'estado', 'estados', 'uf', 'regiao', 'localizacao', 'localidade', 'brasilia', 'endereco'],
+  'taxa': ['taxa', 'taxas', 'servico', 'tarifa', 'bancaria', 'subtotal', 'total', 'valor'],
+  'transacao': ['nrtran', 'tran', 'transacao', 'comprovante', 'pedido', 'expirado'],
+  'conta': ['excluir', 'exclusao', 'lgpd', 'deslogar', 'sair', 'privacidade', 'termos']
 };
 
 // Mapa de Ações e Modificadores
 const ACTION_MAP = {
-  'ver': ['ver', 'vejo', 've', 'vemos', 'olhar', 'olho', 'consultar', 'achar', 'encontrar', 'aparecer', 'acessar', 'abrir'],
+  'ver': ['ver', 'vejo', 've', 'vemos', 'olhar', 'olho', 'consultar', 'achar', 'encontrar', 'aparecer', 'acessar', 'abrir', 'onde', 'localizar'],
   'alterar': ['alterar', 'altero', 'altera', 'mudar', 'mudo', 'trocar', 'troco', 'editar', 'atualizar', 'modificar'],
   'comprar': ['comprar', 'compro', 'compra', 'comprei', 'adquirir', 'pagar', 'pagamento', 'adquiro'],
-  'transferir': ['transferir', 'transfiro', 'repassar', 'passar', 'doar', 'ceder'],
-  'desativar': ['desativar', 'desativo', 'cancelar', 'desligar', 'silenciar', 'bloquear', 'remover'],
-  'chegar': ['chegar', 'chegaram', 'chegou', 'receber', 'recebi', 'recebo', 'envio', 'enviado'],
+  'transferir': ['transferir', 'transfiro', 'repassar', 'passar', 'doar', 'ceder', 'enviar', 'mandar'],
+  'desativar': ['desativar', 'desativo', 'desligar', 'silenciar', 'bloquear', 'remover', 'sair', 'deslogar'],
+  'cancelar': ['cancelar', 'cancelo', 'cancelamento', 'estornar', 'estorno', 'reembolsar', 'reembolso', 'desistir'],
+  'chegar': ['chegar', 'chegaram', 'chegou', 'receber', 'recebi', 'recebo', 'envio', 'enviado', 'demora', 'prazo'],
   'anteriores': ['anterior', 'anteriores', 'passado', 'passados', 'antigo', 'antigos', 'historico']
 };
 

@@ -1,146 +1,422 @@
 [
   {
-    "modulo": "Perfil e Acesso",
-    "pergunta": "Como redefinir minha senha?",
-    "resposta": "Acesse a tela de Login, informe seu e-mail, clique em Iniciar e depois em \"Esqueci minha senha\". Siga as instruções enviadas para o seu e-mail cadastrado.",
+    "modulo": "Eventos e Localização",
+    "pergunta": "Como mudar de cidade ou estado para ver eventos em outra região?",
+    "resposta": "Na tela de Início, toque no botão de localização no canto superior esquerdo (onde aparece o nome da cidade atual, ex: Brasília DF). Na janela que abrir, selecione a sigla do estado (UF) desejado ou pesquise pelo nome da cidade.",
     "destaque": true
   },
   {
-    "modulo": "Perfil e Acesso",
-    "pergunta": "O que significa a opção 'Você é associado ou colaborador'?",
-    "resposta": "Essa opção serve para identificar seu vínculo com o clube. Ao selecioná-la, basta autenticar sua matrícula ou CPF para ter acesso aos benefícios exclusivos de associado.",
+    "modulo": "Eventos e Localização",
+    "pergunta": "Onde altero a minha localização no aplicativo?",
+    "resposta": "Você pode alterar sua localização tocando no ícone com o nome da cidade e estado no canto superior esquerdo da tela de Início. Basta escolher o estado e selecionar a cidade desejada.",
     "destaque": false
   },
   {
-    "modulo": "Perfil e Acesso",
+    "modulo": "Eventos e Localização",
+    "pergunta": "Como ver eventos de outras cidades ou estados?",
+    "resposta": "Toque na cidade exibida no topo esquerdo da tela Inicial para abrir a janela de Localização. Escolha a sigla do estado desejado (ex: DF, GO, SP, RJ) e selecione a cidade para carregar os eventos daquela região.",
+    "destaque": false
+  },
+  {
+    "modulo": "Eventos e Localização",
+    "pergunta": "Por que não aparecem eventos na tela inicial do meu aplicativo?",
+    "resposta": "Verifique se a cidade selecionada no topo esquerdo da tela Início possui eventos cadastrados. Se não houver eventos na sua cidade no momento, você pode alterar a localização para conferir a programação de cidades vizinhas ou de outros estados.",
+    "destaque": false
+  },
+  {
+    "modulo": "Eventos e Localização",
+    "pergunta": "Como pesquisar um evento específico no aplicativo?",
+    "resposta": "Na tela de Início, utilize o campo Pesquisar evento localizado no topo superior. Digite o nome do evento, show, artista ou festival que deseja encontrar.",
+    "destaque": true
+  },
+  {
+    "modulo": "Eventos e Localização",
+    "pergunta": "Onde encontro a barra de busca de eventos?",
+    "resposta": "A barra de busca fica no topo da tela de Início, com o texto Pesquisar evento. Basta tocar nela e digitar o nome do evento procurado.",
+    "destaque": false
+  },
+  {
+    "modulo": "Eventos e Localização",
+    "pergunta": "Como procurar shows pelo nome do artista ou festa?",
+    "resposta": "Acesse a tela Início e digite o nome do artista ou da festa no campo Pesquisar evento no topo da tela para filtrar os resultados rapidamente.",
+    "destaque": false
+  },
+  {
+    "modulo": "Eventos e Localização",
+    "pergunta": "O que significa a seção Viva à sua maneira?",
+    "resposta": "A seção Viva à sua maneira reúne as categorias temáticas do aplicativo (como Shows, Festas, Infantis, Esportes e Cursos) para você navegar facilmente e encontrar atrações de acordo com seu estilo.",
+    "destaque": false
+  },
+  {
+    "modulo": "Eventos e Localização",
+    "pergunta": "Para que serve a seção Viva à sua maneira na tela inicial?",
+    "resposta": "Ela serve para você explorar eventos divididos por categorias como Shows, Festas, Eventos Infantis, Esportes e Workshops, facilitando a escolha da sua programação.",
+    "destaque": false
+  },
+  {
+    "modulo": "Eventos e Localização",
+    "pergunta": "Como filtrar eventos por categorias como Shows, Festas ou Esportes?",
+    "resposta": "Na tela de Início, role até a seção Viva à sua maneira e toque no ícone da categoria desejada (Shows, Festas, Infantis, Esportes, Cursos e Workshops) ou clique em Ver tudo ao lado de cada uma.",
+    "destaque": false
+  },
+  {
+    "modulo": "Eventos e Localização",
+    "pergunta": "O que significa a mensagem Não há eventos nesta categoria?",
+    "resposta": "Essa mensagem indica que, no momento, não há nenhum evento programado ou com ingressos abertos para a categoria selecionada naquela cidade. Novos eventos são adicionados frequentemente.",
+    "destaque": false
+  },
+  {
+    "modulo": "Eventos e Localização",
+    "pergunta": "Por que aparece Não há eventos nesta categoria quando clico em uma categoria?",
+    "resposta": "Significa que não existem eventos disponíveis daquele tipo no momento na cidade selecionada. Você pode verificar outras categorias ou trocar de cidade no topo da tela.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Onde vejo as regras e observações do evento?",
+    "resposta": "Você pode encontrar as regras e observações do evento na página de detalhes do evento. Ao tocar no evento na tela inicial, role a página até a seção REGRAS/OBSERVAÇÕES.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Onde encontro as informações e regras do show?",
+    "resposta": "Acesse a página do show tocando nele na tela Inicial e role até o bloco REGRAS/OBSERVAÇÕES. Lá estarão descritas as normas de acesso, recomendações e regras gerais.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Como saber o que é permitido ou proibido no evento?",
+    "resposta": "As proibições, itens autorizados e regras de conduta ficam detalhadas na seção REGRAS/OBSERVAÇÕES dentro da página do próprio evento no aplicativo.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Onde ficam os avisos importantes sobre o evento?",
+    "resposta": "Todos os avisos, restrições e orientações são informados na seção REGRAS/OBSERVAÇÕES na tela descritiva do evento.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Onde vejo o cronograma e os horários das atrações do evento?",
+    "resposta": "Na página do evento, role até a seção ATRAÇÕES. Lá você verá a lista de shows e atividades, juntamente com as datas e os horários de início programados.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Como ver a programação e os artistas que vão tocar no show?",
+    "resposta": "Toque no evento desejado na tela Início e localize a seção ATRAÇÕES. O aplicativo exibe cada artista participante com a respectiva data e horário da apresentação.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Onde encontro o endereço e local exato onde vai ser o evento?",
+    "resposta": "Na página do evento, logo abaixo da data e horário, há um ícone de mapa com o nome do local e o endereço completo (com rua, bairro, cidade, estado e CEP).",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Como saber o local e o endereço de um show?",
+    "resposta": "Abra os detalhes do show no aplicativo. O endereço completo fica indicado no bloco Local do show, logo abaixo da imagem e da data do evento.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Onde vejo o contato dos organizadores do evento?",
+    "resposta": "Na página do evento, role até a seção CONTATO. Lá você encontrará os telefones fixos, WhatsApp/celular, perfil do Instagram e e-mail oficial da organização.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Como falar com a produção ou organizador de um evento?",
+    "resposta": "Abra o evento no app e vá até a seção CONTATO no final da página para ver o telefone, WhatsApp ou e-mail dos responsáveis pela produção.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "O que significa a opção Você é Associado/Colaborador?",
+    "resposta": "Esse botão fica no topo da tela do evento e serve para você se autenticar com sua matrícula ou CPF do clube, garantindo descontos especiais e lotes exclusivos para associados e colaboradores.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Como obter desconto de sócio ou colaborador no ingresso?",
+    "resposta": "Clique no botão Você é Associado/Colaborador? no topo da tela do evento e informe seus dados de sócio para aplicar a tarifa com desconto antes de comprar.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Onde vejo os descontos disponíveis para o evento?",
+    "resposta": "Na página do evento, confira a seção DESCONTOS para visualizar as porcentagens de desconto oferecidas (ex: desconto de 50%, desconto de 10%) para associados ou promoções vigentes.",
+    "destaque": false
+  },
+  {
+    "modulo": "Compra e Escolha de Lugares",
+    "pergunta": "O que significa a mensagem Não há lotes de ingressos disponíveis ainda para esse Evento?",
+    "resposta": "Essa mensagem indica que o evento já foi anunciado na programação, mas as vendas dos ingressos ainda não foram abertas pela organização. Fique atento às datas de abertura das vendas no aplicativo.",
+    "destaque": true
+  },
+  {
+    "modulo": "Compra e Escolha de Lugares",
+    "pergunta": "Por que aparece o aviso de que não há lotes disponíveis ao tentar comprar?",
+    "resposta": "Isso acontece quando as vendas para aquele evento ainda não começaram ou quando os lotes de ingressos estão em fase de liberação pelos organizadores.",
+    "destaque": false
+  },
+  {
+    "modulo": "Compra e Escolha de Lugares",
+    "pergunta": "Quando abrem as vendas dos lotes de ingressos?",
+    "resposta": "As datas de início das vendas são divulgadas na descrição do evento ou nas redes sociais oficiais do clube. Assim que o lote for liberado, o botão Comprar permitirá selecionar os ingressos.",
+    "destaque": false
+  },
+  {
+    "modulo": "Compra e Escolha de Lugares",
+    "pergunta": "O que significa a mensagem Sem espaços disponíveis ou botão Indisponível?",
+    "resposta": "Essa mensagem indica que todos os ingressos ou assentos daquele setor específico já se esgotaram. Caso outros setores estejam disponíveis, você ainda poderá adquiri-los.",
+    "destaque": false
+  },
+  {
+    "modulo": "Compra e Escolha de Lugares",
+    "pergunta": "Por que o botão de comprar está como Indisponível?",
+    "resposta": "O botão fica como Indisponível e o texto Sem espaços disponíveis é exibido quando a capacidade total do setor foi atingida e não há mais vagas para venda.",
+    "destaque": false
+  },
+  {
+    "modulo": "Compra e Escolha de Lugares",
+    "pergunta": "Qual a diferença entre setor Livre (sem assento) e Individual (mapa)?",
+    "resposta": "No setor Livre (sem assento) (como pista), você escolhe a quantidade de ingressos com os botões + e -, sem lugar marcado. Já no setor Individual (mapa) (como arquibancada ou mesas), você clica em Selecione os lugares para escolher cadeiras numeradas no mapa do evento.",
+    "destaque": true
+  },
+  {
+    "modulo": "Compra e Escolha de Lugares",
+    "pergunta": "Como escolher assentos ou cadeiras no mapa do evento?",
+    "resposta": "Na tela de compra do evento, no setor que possuir a opção Individual (mapa), toque no botão Selecione os lugares. Um mapa interativo será exibido; toque nas cadeiras desejadas (elas ficarão vermelhas), use o zoom + e - se necessário e clique em Confirmar lugares.",
+    "destaque": false
+  },
+  {
+    "modulo": "Compra e Escolha de Lugares",
+    "pergunta": "Como funciona a seleção de lugares no mapa interativo?",
+    "resposta": "Ao tocar em Selecione os lugares, o mapa da arquibancada ou das mesas é aberto. Toque nos assentos livres para selecioná-los e toque no botão verde Confirmar lugares na parte inferior da tela.",
+    "destaque": false
+  },
+  {
+    "modulo": "Compra e Escolha de Lugares",
+    "pergunta": "Como adicionar mais de um ingresso na compra?",
+    "resposta": "Nos setores livres, toque no botão + ao lado da categoria de ingresso (Inteira, Desconto, etc.) para aumentar a quantidade. Nos setores com mapa, selecione múltiplos assentos antes de confirmar.",
+    "destaque": false
+  },
+  {
+    "modulo": "Pagamentos e Taxas",
+    "pergunta": "Quais são as formas de pagamento aceitas?",
+    "resposta": "O aplicativo aceita pagamentos instantâneos via PIX e pagamentos via Cartão de Crédito.",
+    "destaque": true
+  },
+  {
+    "modulo": "Pagamentos e Taxas",
+    "pergunta": "Como pagar meus ingressos com PIX?",
+    "resposta": "Na tela de Formas de Pagamento, selecione a aba PIX e toque no botão Comprar no rodapé. O aplicativo processará a compra e exibirá o código Pix copia-e-cola e o QR Code para você pagar no aplicativo do seu banco.",
+    "destaque": false
+  },
+  {
+    "modulo": "Pagamentos e Taxas",
+    "pergunta": "Como pagar com cartão de crédito?",
+    "resposta": "Na tela de Formas de Pagamento, selecione a aba Cartão de crédito, insira o número do cartão, os dados solicitados e preencha nome e CPF para finalizar a compra clicando em Comprar.",
+    "destaque": false
+  },
+  {
+    "modulo": "Pagamentos e Taxas",
+    "pergunta": "O que são o Subtotal, a Taxa de Serviço e a Tarifa Bancária?",
+    "resposta": "O Subtotal é o valor dos ingressos escolhidos. A Taxa de Serviço cobre os custos operacionais da plataforma de emissão e controle de portaria. A Tarifa Bancária é a taxa cobrada pela processadora financeira. O Total é a soma final que você paga.",
+    "destaque": false
+  },
+  {
+    "modulo": "Pagamentos e Taxas",
+    "pergunta": "Por que é cobrada uma taxa de serviço no ingresso?",
+    "resposta": "A taxa de serviço é destinada à manutenção do sistema de emissão de ingressos, suporte e segurança da validação digital nas catracas do evento.",
+    "destaque": false
+  },
+  {
+    "modulo": "Pagamentos e Taxas",
+    "pergunta": "Quanto tempo tenho para pagar o código PIX gerado?",
+    "resposta": "O código PIX gerado possui validade por tempo limitado (normalmente de 15 a 30 minutos). Se o pagamento não for identificado dentro desse prazo, os lugares selecionados são liberados novamente.",
+    "destaque": false
+  },
+  {
+    "modulo": "Meus Ingressos e Carteirinha",
+    "pergunta": "Onde eu vejo os ingressos que comprei?",
+    "resposta": "Você pode acessar seus ingressos tocando no ícone Ingressos na barra inferior do aplicativo, ou acessando o Perfil no canto superior direito e clicando em Meus Ingressos.",
+    "destaque": true
+  },
+  {
+    "modulo": "Meus Ingressos e Carteirinha",
+    "pergunta": "Como acessar meus ingressos válidos no aplicativo?",
+    "resposta": "Basta tocar na aba Ingressos no menu inferior. Seus ingressos válidos aparecerão com o nome do evento, data, valor e número da transação (Nr.Tran). Toque no ingresso para ver o QR Code.",
+    "destaque": false
+  },
+  {
+    "modulo": "Meus Ingressos e Carteirinha",
+    "pergunta": "O que significa o Nr.Tran no meu ingresso?",
+    "resposta": "Nr.Tran é o Número da Transação gerado exclusivamente para a sua compra. Ele serve como comprovante do seu pedido e facilita qualquer atendimento na secretaria ou suporte do evento.",
+    "destaque": false
+  },
+  {
+    "modulo": "Meus Ingressos e Carteirinha",
+    "pergunta": "O que significa a situação Expirado no ingresso?",
+    "resposta": "A situação Expirado indica que a data do evento já passou ou que o prazo de validade para utilização daquele ingresso se encerrou.",
+    "destaque": false
+  },
+  {
+    "modulo": "Meus Ingressos e Carteirinha",
+    "pergunta": "O que significa Compra Cancelada em Ingressos Anteriores?",
+    "resposta": "Essa situação indica que a compra do ingresso foi cancelada (por exemplo, por solicitação de estorno ou por não pagamento do Pix no prazo). O ingresso fica registrado no histórico apenas para conferência.",
+    "destaque": false
+  },
+  {
+    "modulo": "Meus Ingressos e Carteirinha",
+    "pergunta": "Onde vejo o histórico dos meus ingressos passados?",
+    "resposta": "Acesse seu Perfil e clique na opção Ingressos Anteriores. Lá você poderá consultar o histórico de todas as suas compras e eventos já finalizados.",
+    "destaque": false
+  },
+  {
+    "modulo": "Meus Ingressos e Carteirinha",
+    "pergunta": "Onde fica o QR Code do ingresso para entrar no evento?",
+    "resposta": "Acesse Meus Ingressos, selecione o ingresso do evento e toque nele para abrir os detalhes. O QR Code será exibido na tela para validação na portaria ou catraca.",
+    "destaque": true
+  },
+  {
+    "modulo": "Meus Ingressos e Carteirinha",
+    "pergunta": "Preciso imprimir o ingresso ou posso mostrar na tela do celular?",
+    "resposta": "Não é necessário imprimir! Basta apresentar a tela do seu celular com o QR Code nítido e bom brilho na portaria do evento.",
+    "destaque": false
+  },
+  {
+    "modulo": "Meus Ingressos e Carteirinha",
+    "pergunta": "Como transferir meu ingresso para outra pessoa?",
+    "resposta": "Acesse Meus Ingressos, selecione o ingresso desejado e toque no botão Transferir. Informe o CPF ou e-mail cadastrado da pessoa que receberá o ingresso.",
+    "destaque": false
+  },
+  {
+    "modulo": "Cancelamento e Reembolso",
+    "pergunta": "Como solicitar o cancelamento ou estorno de um ingresso?",
+    "resposta": "Para solicitar o cancelamento, acesse Meus Ingressos, toque no ingresso desejado e escolha Solicitar Cancelamento/Reembolso. Preencha as informações solicitadas ou contate a secretaria com o Nr.Tran da compra.",
+    "destaque": true
+  },
+  {
+    "modulo": "Cancelamento e Reembolso",
+    "pergunta": "Qual é o prazo para pedir cancelamento e estorno do ingresso?",
+    "resposta": "De acordo com o Código de Defesa do Consumidor, o prazo de cancelamento é de até 7 dias corridos após a compra online, contanto que o pedido seja feito com pelo menos 48 horas de antecedência do início do evento.",
+    "destaque": false
+  },
+  {
+    "modulo": "Cancelamento e Reembolso",
+    "pergunta": "Em quanto tempo o dinheiro do estorno volta na minha conta?",
+    "resposta": "Para pagamentos via PIX, o estorno ocorre em até 24 a 48 horas úteis na mesma conta de origem. Para compras via Cartão de Crédito, o crédito constará em até 1 ou 2 faturas subsequentes.",
+    "destaque": false
+  },
+  {
+    "modulo": "Cancelamento e Reembolso",
+    "pergunta": "O que acontece se o evento for cancelado pelos organizadores?",
+    "resposta": "Em caso de cancelamento oficial do evento, o reembolso de 100% do valor pago é processado automaticamente para a mesma forma de pagamento utilizada.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
     "pergunta": "Como alterar meus dados cadastrais?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em \"Meus Dados\". Lá você pode alterar seu nome, telefone, e-mail e endereço.",
+    "resposta": "Vá até o Perfil no canto inferior ou superior direito do aplicativo e clique em Meus Dados. Lá você pode atualizar seu Nome, Telefone, E-mail e Data de Nascimento, clicando em Salvar Dados ao finalizar.",
     "destaque": true
   },
   {
-    "modulo": "Perfil e Acesso",
-    "pergunta": "Como alterar o telefone do cadastro?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em \"Meus Dados\".",
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Onde edito meu telefone e data de nascimento no aplicativo?",
+    "resposta": "Acesse a aba Perfil, selecione Meus Dados e edite os campos de Telefone ou Data de Nascimento. Depois toque no botão verde Salvar Dados.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Posso alterar o meu CPF cadastrado no aplicativo?",
+    "resposta": "Por questões de segurança e integridade fiscal, o CPF não pode ser editado pelo aplicativo após o cadastro inicial. Para regularizar seu CPF, entre em contato diretamente com a secretaria do clube com um documento oficial.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "O que é o botão Excluir conta em Meus Dados?",
+    "resposta": "O botão Excluir conta permite a remoção definitiva do seu cadastro e de seus dados pessoais do aplicativo, conforme previsto na Lei Geral de Proteção de Dados (LGPD).",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Como solicitar a exclusão definitiva da minha conta e dados?",
+    "resposta": "Acesse Perfil > Meus Dados, role até o final da tela e toque no botão Excluir conta. Uma confirmação será solicitada para prosseguir com a exclusão definitiva.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Como sair (deslogar) da minha conta no aplicativo?",
+    "resposta": "Acesse a aba Perfil, role até o final da tela e toque no botão vermelho Sair da conta.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Onde encontro a Política de Privacidade e os Termos de Uso?",
+    "resposta": "Acesse a aba Perfil. No final da tela, acima do botão Sair da conta, você encontrará o link clicável Política de Privacidade e o link de Ajuda.",
+    "destaque": false
+  },
+  {
+    "modulo": "Notificações e Suporte",
+    "pergunta": "Como ativar ou desativar os alertas e notificações do aplicativo?",
+    "resposta": "Vá até o Perfil e localize a opção Receber alertas. Basta alternar a chave (chave verde para ativado, cinza para desativado) para controlar se deseja receber notificações no seu celular.",
     "destaque": true
   },
   {
-    "modulo": "Perfil e Acesso",
-    "pergunta": "Como alterar ou ver o meu e-mail cadastrado?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em \"Meus Dados\". Lá você pode visualizar e atualizar o seu e-mail.",
+    "modulo": "Notificações e Suporte",
+    "pergunta": "Onde fica a opção Receber alertas no Perfil?",
+    "resposta": "Fica na tela de Perfil, logo abaixo de Ingressos Anteriores. Há um botão interruptor onde você pode ligar ou desligar as notificações push a qualquer momento.",
     "destaque": false
   },
   {
-    "modulo": "Perfil e Acesso",
-    "pergunta": "Não consigo alterar o meu CPF?",
-    "resposta": "Para alterar ou regularizar seu CPF, vá até o Perfil no canto superior direito do aplicativo e clique em \"Meus Dados\". Caso necessite de alteração cadastral avançada, consulte a secretaria.",
+    "modulo": "Notificações e Suporte",
+    "pergunta": "Onde vejo as notificações e avisos recebidos no app?",
+    "resposta": "Acesse o seu Perfil e clique em Notificações. Todas as mensagens, lembretes de eventos e comunicados do clube serão exibidos nessa tela.",
     "destaque": false
   },
   {
-    "modulo": "Perfil e Acesso",
-    "pergunta": "Meus amigos ou familiares podem se cadastrar no aplicativo?",
-    "resposta": "Sim! Amigos e familiares podem se cadastrar normalmente. Se forem sócios, terão todos os benefícios de associado vinculados à sua matrícula; se forem não associados, terão acesso aos recursos e compras gerais.",
+    "modulo": "Notificações e Suporte",
+    "pergunta": "Por que minha tela de notificações mostra Não há notificações?",
+    "resposta": "Essa mensagem indica que você não tem nenhum aviso ou mensagem pendente no momento. Quando houver novos comunicados ou atualizações dos seus ingressos, eles aparecerão nessa lista.",
     "destaque": false
   },
   {
-    "modulo": "Perfil e Acesso",
-    "pergunta": "Posso cadastrar um responsável para minha conta?",
-    "resposta": "Sim! Caso você seja menor de 18 anos ou tenha algum impedimento, um responsável legal pode ser cadastrado para sua conta.",
+    "modulo": "Notificações e Suporte",
+    "pergunta": "Onde encontro a opção de Ajuda no aplicativo?",
+    "resposta": "Acesse a aba Perfil. No rodapé da tela, logo acima do botão Sair da conta, clique no link Ajuda para acessar as orientações e canais de suporte.",
     "destaque": false
   },
   {
-    "modulo": "Perfil e Acesso",
-    "pergunta": "Preciso ser sócio para comprar ingressos ou participar de eventos?",
-    "resposta": "Não, não é obrigatório ser sócio do clube para comprar ingressos ou participar de eventos. Você também pode comprar ingressos para amigos e familiares.",
+    "modulo": "Notificações e Suporte",
+    "pergunta": "Como falar com um atendente humano ou com a secretaria do clube?",
+    "resposta": "Você pode entrar em contato com a secretaria através dos canais de suporte informados na seção CONTATO dos eventos, pelo link Ajuda no Perfil, ou presencialmente na sede do clube de segunda a sexta das 08h às 18h.",
     "destaque": false
   },
   {
-    "modulo": "Notificações",
-    "pergunta": "Como eu vejo as notificações?",
-    "resposta": "Para ver as notificações recebidas, vá até o Perfil no canto superior direito do aplicativo e clique em \"Notificações\".",
+    "modulo": "Pagamentos e Taxas",
+    "pergunta": "Em quantas vezes posso parcelar o meu ingresso?",
+    "resposta": "O parcelamento no cartão de crédito pode ser feito em até 7 vezes, dependendo das configurações definidas pelos organizadores de cada evento.",
     "destaque": true
   },
   {
-    "modulo": "Notificações",
-    "pergunta": "Como eu desativo as notificações do aplicativo?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo, clique em \"Receber Alertas\" e desmarque a opção de receber notificações.",
+    "modulo": "Pagamentos e Taxas",
+    "pergunta": "Todos os shows aceitam parcelamento em 7 meses?",
+    "resposta": "Não necessariamente. A quantidade máxima de parcelas varia de acordo com cada show cadastrado no sistema. As opções exatas aparecerão para você na tela de pagamento.",
     "destaque": false
   },
   {
-    "modulo": "Ingressos",
-    "pergunta": "Como eu compro os ingressos para o show?",
-    "resposta": "Para comprar ingressos para um show, vá até a aba Início, selecione o evento desejado, clique no botão \"Comprar\", escolha as opções de ingresso e conclua com o método de pagamento desejado.",
+    "modulo": "Cancelamento e Reembolso",
+    "pergunta": "Até quando posso pedir o cancelamento da minha compra?",
+    "resposta": "O prazo de cancelamento padrão é de até 7 dias, mas isso pode variar de acordo com as regras do evento (ex: até a data anterior ao evento). Consulte os detalhes na tela do seu ingresso.",
     "destaque": true
   },
   {
-    "modulo": "Ingressos",
-    "pergunta": "Como eu vejo os ingressos que comprei?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Meus Ingressos'.",
-    "destaque": true
-  },
-  {
-    "modulo": "Ingressos",
-    "pergunta": "Como vejo meus ingressos anteriores?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Ingressos Anteriores'.",
-    "destaque": false
-  },
-  {
-    "modulo": "Ingressos",
-    "pergunta": "Meus ingressos não chegaram?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Meus Ingressos'. Verifique também seu e-mail cadastrado ou consulte a secretaria do clube.",
-    "destaque": false
-  },
-  {
-    "modulo": "Ingressos",
-    "pergunta": "Posso usar o ingresso de outra pessoa?",
-    "resposta": "Não, cada ingresso é individual e nominal para cada conta. Somente o titular do ingresso poderá entrar no evento.",
-    "destaque": false
-  },
-  {
-    "modulo": "Ingressos",
-    "pergunta": "Posso transferir meu ingresso para outra pessoa?",
-    "resposta": "Sim! Você pode transferir seu ingresso para outra pessoa. Vá até o menu Meus Ingressos, selecione o ingresso desejado e clique em 'Transferir'.",
-    "destaque": false
-  },
-  {
-    "modulo": "Ingressos",
-    "pergunta": "Não consigo acessar o meu ingresso?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Meus Ingressos'.",
-    "destaque": false
-  },
-  {
-    "modulo": "Ingressos",
-    "pergunta": "Comprei um ingresso, mas ele não aparece na minha carteirinha?",
-    "resposta": "Vá até o Perfil no canto superior direito do aplicativo e clique em 'Meus Ingressos'. Se o ingresso não estiver aparecendo, entre em contato com a secretaria do clube.",
-    "destaque": false
-  },
-  {
-    "modulo": "Ingressos",
-    "pergunta": "Vou receber meu ingresso por e-mail?",
-    "resposta": "Sim! Os ingressos são enviados para o e-mail cadastrado na conta após a confirmação do pagamento.",
-    "destaque": false
-  },
-  {
-    "modulo": "Ingressos",
-    "pergunta": "Onde vejo a localização do meu evento?",
-    "resposta": "Para ver a localização do evento, acesse a aba Início, clique no evento desejado e veja os detalhes do endereço e informações do local.",
-    "destaque": false
-  },
-  {
-    "modulo": "Ingressos",
-    "pergunta": "Como ver mais informações sobre o evento?",
-    "resposta": "Para ver detalhes do evento, acesse a aba Início e selecione o evento desejado. Lá você encontrará local, data, descrição, atrações e contato.",
-    "destaque": false
-  },
-  {
-    "modulo": "Início",
-    "pergunta": "O que significa a seção 'Viva à sua maneira'?",
-    "resposta": "Nessa seção você encontra os principais shows, atrações e eventos em destaque disponíveis no aplicativo para você aproveitar.",
-    "destaque": false
-  },
-  {
-    "modulo": "Início",
-    "pergunta": "Onde encontro os jogos que estão acontecendo no momento?",
-    "resposta": "Na tela de Início, na seção 'Viva à sua maneira', você encontra os principais shows, atrações e eventos em destaque disponíveis no aplicativo para você aproveitar.",
+    "modulo": "Cancelamento e Reembolso",
+    "pergunta": "A regra de 7 dias para cancelamento vale para qualquer evento?",
+    "resposta": "O prazo de até 7 dias é configurado pelos organizadores, mas cada evento pode ter sua própria data limite para cancelamento (como por exemplo, cancelar apenas até a data anterior ao show). Verifique sempre as regras do evento que você comprou.",
     "destaque": false
   }
 ]

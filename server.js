@@ -53,22 +53,22 @@ const SUBJECT_MAP = {
   'notificacao': ['notificacao', 'notificacoes', 'alerta', 'alertas', 'aviso', 'avisos', 'push', 'mensagens'],
   'ingresso': ['ingresso', 'ingressos', 'entrada', 'entradas', 'bilhete', 'bilhetes', 'convite', 'convites', 'ticket', 'tickets', 'carteirinha'],
   'evento': ['show', 'shows', 'evento', 'eventos', 'festa', 'festas', 'viva', 'maneira', 'jogos', 'jogo', 'partida', 'partidas', 'cursos', 'workshops', 'infantil', 'esportes'],
-  'socio': ['socio', 'socios', 'associado', 'associados', 'associacao', 'clube', 'matricula', 'filiado', 'titular', 'colaborador', 'desconto'],
-  'responsavel': ['responsavel', 'responsaveis', 'menor', 'filho', 'filhos', 'dependente', 'dependentes', 'idade', 'crianca', 'criancas'],
+  'socio': ['socio', 'socios', 'associado', 'associados', 'associacao', 'clube', 'matricula', 'filiado', 'titular', 'colaborador', 'desconto', 'inativo', 'inativos', 'ex'],
+  'responsavel': ['responsavel', 'responsaveis', 'menor', 'filho', 'filhos', 'dependente', 'dependentes', 'idade', 'crianca', 'criancas', 'pai', 'pais', 'mae', 'maes'],
   'amigos': ['amigo', 'amigos', 'familiar', 'familiares', 'parente', 'parentes', 'terceiro', 'terceiros'],
   'reembolso': ['reembolso', 'estorno', 'estornar', 'devolucao', 'devolver', 'dinheiro', 'ressarcimento'],
   'cancelamento': ['cancelamento', 'cancelar', 'cancelo', 'desistir', 'anular', 'cancelado', 'cancelados', 'prazo', 'dias'],
   'pagamento': ['pagamento', 'pagamentos', 'pagar', 'pago', 'pix', 'cartao', 'credito', 'debito', 'parcelamento', 'parcelar', 'parcelas', 'vezes', 'meses', 'fatura'],
   'qrcode': ['qrcode', 'qr', 'code', 'codigo', 'barras', 'validar', 'leitura', 'portaria', 'catraca'],
   'suporte': ['suporte', 'secretaria', 'atendente', 'humano', 'telefone', 'whatsapp', 'fale', 'duvida', 'ajuda'],
-  'impressao': ['imprimir', 'impressao', 'papel', 'impresso', 'offline', 'internet', 'print'],
+  'impressao': ['imprimir', 'impressao', 'papel', 'impresso', 'offline', 'internet', 'print', 'prints', 'screenshot', 'captura', 'foto'],
   'lote': ['lote', 'lotes', 'disponivel', 'disponiveis', 'indisponivel', 'esgotado', 'venda', 'vendas', 'abertura'],
   'assento': ['assento', 'assentos', 'cadeira', 'cadeiras', 'lugar', 'lugares', 'mapa', 'arquibancada', 'pista', 'setor', 'setores', 'mesa', 'mesas', 'marcar'],
   'regras': ['regra', 'regras', 'observacao', 'observacoes', 'proibido', 'permitido', 'aviso', 'avisos', 'normas', 'levar'],
   'localizacao': ['cidade', 'cidades', 'estado', 'estados', 'uf', 'regiao', 'localizacao', 'localidade', 'brasilia', 'endereco'],
   'taxa': ['taxa', 'taxas', 'servico', 'tarifa', 'bancaria', 'subtotal', 'total', 'valor'],
   'transacao': ['nrtran', 'tran', 'transacao', 'comprovante', 'pedido', 'expirado'],
-  'conta': ['excluir', 'exclusao', 'lgpd', 'deslogar', 'sair', 'privacidade', 'termos']
+  'conta': ['excluir', 'exclusao', 'lgpd', 'lgbd', 'lgdb', 'deslogar', 'sair', 'privacidade', 'termos', 'protecao', 'seguranca']
 };
 
 // Mapa de Ações e Modificadores

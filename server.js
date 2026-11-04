@@ -1,6 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import fs from 'fs';
+import http from 'http';
+import https from 'https';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { testDbConnection } from './db.js';
 import {
   getFaqData,
@@ -16,6 +21,18 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Redirecionamento automático HTTP -> HTTPS
+app.use((req, res, next) => {
+  if (!req.secure && req.headers['x-forwarded-proto'] !== 'https' && req.headers.host) {
+    // Se for localhost ou IP local para testes diretos, permite sem forçar redirect
+    const host = req.headers.host;
+    if (!host.includes('localhost') && !host.startsWith('127.0.0.1')) {
+      return res.redirect(301, `https://${host}${req.url}`);
+    }
+  }
+  next();
+});
 
 // 2. Normalizador de texto (remove acentos, pontuações e converte para minúsculas)
 function normalizeText(text) {
@@ -40,20 +57,42 @@ const STOP_WORDS = new Set([
   'que', 'quem', 'se', 'sem', 'ser', 'seu', 'seus', 'sua', 'suas', 'sao', 'tambem',
   'te', 'tem', 'temos', 'ter', 'teu', 'teus', 'tu', 'tua', 'tuas', 'um', 'uma',
   'umas', 'uns', 'voce', 'voces', 'onde', 'como', 'consigo', 'posso', 'pode', 'podem',
-  'algo', 'tudo', 'vai', 'vou', 'estou', 'fazer', 'faco', 'faca'
+  'algo', 'tudo', 'vai', 'vou', 'estou', 'fazer', 'faco', 'faca',
+  'preciso', 'quero', 'gostaria', 'devo', 'tenho', 'fiz', 'queria', 'saber', 'dizer'
 ]);
+
+// Palavras e expressões interrogativas mapeadas para intenções do usuário
+const QUESTION_MAP = {
+  'como': ['como', 'de que forma', 'de que maneira', 'como faco', 'como posso', 'como consigo', 'qual o jeito'],
+  'onde': ['onde', 'aonde', 'em que lugar', 'em qual lugar', 'por onde', 'qual local', 'qual tela'],
+  'quando': ['quando', 'em que momento', 'qual o prazo', 'qual data', 'a partir de quando'],
+  'quem': ['quem', 'com quem', 'para quem'],
+  'qual': ['qual', 'quais', 'qual deles', 'qual delas'],
+  'quanto': ['quanto', 'quantos', 'quantas', 'qual valor', 'quanto custa', 'quanto fica'],
+  'porque': ['por que', 'porque', 'por qual motivo', 'por qual razao', 'qual o motivo', 'qual a razao'],
+  'o_que': ['o que', 'que coisa', 'qual coisa', 'o que significa', 'o que e'],
+  'qual_prazo': ['ate quando', 'quanto tempo', 'em quanto tempo', 'qual o prazo', 'quantos dias']
+};
+
+// Expressões em primeira pessoa e verbos de intenção
+const INTENT_PATTERNS = [
+  /^(eu\s+)?(quero|queria|gostaria\s+de|preciso|tenho\s+que|devo)\s+(saber\s+)?/i,
+  /^(eu\s+)?(consigo|posso|podem)\s+/i,
+  /^(como|onde|quando|qual|quanto|por\s*que)\s+(eu\s+)?(faco\s+pra|posso|consigo|devo)\s+/i,
+  /^(me\s+ajuda|me\s+informa|me\s+tira\s+uma\s+duvida|duvida\s+sobre)\s+/i
+];
 
 // Mapa de Sinônimos e Entidades (Assuntos Principais)
 const SUBJECT_MAP = {
   'email': ['email', 'e-mail', 'mail', 'correio'],
-  'senha': ['senha', 'senhas', 'password', 'pin', 'esqueci', 'recuperar', 'redefinir', 'redefino'],
+  'senha': ['senha', 'senhas', 'password', 'pin', 'esqueci', 'recuperar', 'redefinir', 'redefino', 'troco', 'troca', 'acesso', 'login'],
   'telefone': ['telefone', 'telefones', 'celular', 'celulares', 'fone', 'contato', 'numero'],
   'cpf': ['cpf', 'documento', 'identidade'],
   'dados': ['dados', 'cadastro', 'cadastrais', 'cadastrado', 'cadastrar', 'perfil', 'nome', 'nascimento', 'aniversario'],
   'notificacao': ['notificacao', 'notificacoes', 'alerta', 'alertas', 'aviso', 'avisos', 'push', 'mensagens'],
   'ingresso': ['ingresso', 'ingressos', 'entrada', 'entradas', 'bilhete', 'bilhetes', 'convite', 'convites', 'ticket', 'tickets', 'carteirinha'],
   'evento': ['show', 'shows', 'evento', 'eventos', 'festa', 'festas', 'viva', 'maneira', 'jogos', 'jogo', 'partida', 'partidas', 'cursos', 'workshops', 'infantil', 'esportes'],
-  'socio': ['socio', 'socios', 'associado', 'associados', 'associacao', 'clube', 'matricula', 'filiado', 'titular', 'colaborador', 'desconto', 'inativo', 'inativos', 'ex'],
+  'socio': ['socio', 'socios', 'associado', 'associados', 'associacao', 'clube', 'matricula', 'filiado', 'titular', 'colaborador', 'desconto', 'inativo', 'inativos', 'ex', 'aabb', 'exclusivo', 'exclusiva', 'exclusividade'],
   'responsavel': ['responsavel', 'responsaveis', 'menor', 'filho', 'filhos', 'dependente', 'dependentes', 'idade', 'crianca', 'criancas', 'pai', 'pais', 'mae', 'maes'],
   'amigos': ['amigo', 'amigos', 'familiar', 'familiares', 'parente', 'parentes', 'terceiro', 'terceiros'],
   'reembolso': ['reembolso', 'estorno', 'estornar', 'devolucao', 'devolver', 'dinheiro', 'ressarcimento'],
@@ -73,36 +112,71 @@ const SUBJECT_MAP = {
 
 // Mapa de Ações e Modificadores
 const ACTION_MAP = {
-  'ver': ['ver', 'vejo', 've', 'vemos', 'olhar', 'olho', 'consultar', 'achar', 'encontrar', 'aparecer', 'acessar', 'abrir', 'onde', 'localizar'],
+  'ver': ['ver', 'vejo', 've', 'vemos', 'olhar', 'olho', 'consultar', 'achar', 'acho', 'acha', 'acham', 'encontrar', 'encontro', 'encontra', 'encontram', 'aparecer', 'acessar', 'abrir', 'onde', 'localizar'],
   'alterar': ['alterar', 'altero', 'altera', 'mudar', 'mudo', 'trocar', 'troco', 'editar', 'atualizar', 'modificar'],
   'comprar': ['comprar', 'compro', 'compra', 'comprei', 'adquirir', 'pagar', 'pagamento', 'adquiro'],
+  'adicionar': ['adicionar', 'adiciono', 'adiciona', 'mais', 'quantidade', 'aumentar', 'acrescentar', 'somar'],
   'transferir': ['transferir', 'transfiro', 'repassar', 'passar', 'doar', 'ceder', 'enviar', 'mandar'],
   'desativar': ['desativar', 'desativo', 'desligar', 'silenciar', 'bloquear', 'remover', 'sair', 'deslogar'],
+  'logar': ['logar', 'logado', 'conectado', 'autenticado', 'entrar', 'login'],
   'cancelar': ['cancelar', 'cancelo', 'cancelamento', 'estornar', 'estorno', 'reembolsar', 'reembolso', 'desistir'],
   'chegar': ['chegar', 'chegaram', 'chegou', 'receber', 'recebi', 'recebo', 'envio', 'enviado', 'demora', 'prazo'],
   'anteriores': ['anterior', 'anteriores', 'passado', 'passados', 'antigo', 'antigos', 'historico']
 };
 
-// Extrai assuntos e ações de um texto com casamento exato por palavra
+// Extrai assuntos, ações e tipos de pergunta com normalização inteligente
 function extractEntities(text) {
-  const norm = normalizeText(text);
-  const words = norm.split(' ');
+  let norm = normalizeText(text);
+
+  // Remove ruídos de primeira pessoa e intenções de abertura (ex: "gostaria de saber onde", "eu quero saber como")
+  let cleanText = norm;
+  for (const pattern of INTENT_PATTERNS) {
+    cleanText = cleanText.replace(pattern, '');
+  }
+  cleanText = cleanText.trim() || norm;
+
+  const words = cleanText.split(' ');
   const wordSet = new Set(words);
+  const originalWords = norm.split(' ');
+  const fullWordSet = new Set(originalWords);
+
   const subjects = new Set();
   const actions = new Set();
+  const questionTypes = new Set();
 
+  // 1. Identifica tipos interrogativos (como, onde, quando, porque, etc.)
+  for (const [qType, variants] of Object.entries(QUESTION_MAP)) {
+    for (const variant of variants) {
+      if (norm.includes(variant)) {
+        questionTypes.add(qType);
+        break;
+      }
+    }
+  }
+
+  // Se tem intenção de 'onde', conecta com ação 'ver'/'localizar'
+  if (questionTypes.has('onde')) {
+    actions.add('ver');
+  }
+  // Se tem intenção de 'qual_prazo', conecta com ação 'chegar'/'prazo'
+  if (questionTypes.has('qual_prazo') || questionTypes.has('quando')) {
+    actions.add('chegar');
+  }
+
+  // 2. Extrai Assuntos (Subjects)
   for (const [subjectKey, synonyms] of Object.entries(SUBJECT_MAP)) {
     for (const syn of synonyms) {
-      if (wordSet.has(syn)) {
+      if (wordSet.has(syn) || fullWordSet.has(syn)) {
         subjects.add(subjectKey);
         break;
       }
     }
   }
 
+  // 3. Extrai Ações (Actions)
   for (const [actionKey, synonyms] of Object.entries(ACTION_MAP)) {
     for (const syn of synonyms) {
-      if (wordSet.has(syn)) {
+      if (wordSet.has(syn) || fullWordSet.has(syn)) {
         actions.add(actionKey);
         break;
       }
@@ -111,7 +185,7 @@ function extractEntities(text) {
 
   const rawKeywords = words.filter(w => w.length > 2 && !STOP_WORDS.has(w));
 
-  return { subjects, actions, rawKeywords, wordSet, norm };
+  return { subjects, actions, questionTypes, rawKeywords, wordSet: fullWordSet, norm, cleanText };
 }
 
 // 3. Algoritmo de busca precisa por Relevância Semântica e Filtro de Assunto
@@ -191,11 +265,32 @@ async function searchFaq(userQuery, customList = null) {
       }
     }
 
-    // 5. Relevância por Palavras-Chave brutas
+    // 5. Relevância por Palavras-Chave brutas (com bônus de coincidência direta e stem/plural)
+    let keywordMatches = 0;
     for (const token of queryInfo.rawKeywords) {
-      if (questionInfo.wordSet.has(token)) {
-        score += 15;
+      const matchInQ = Array.from(questionInfo.wordSet).some(w =>
+        w === token ||
+        (token.length > 4 && w.startsWith(token.slice(0, -1))) ||
+        (w.length > 4 && token.startsWith(w.slice(0, -1)))
+      );
+      if (matchInQ) {
+        score += 20;
+        keywordMatches++;
+      } else {
+        const matchInA = Array.from(answerInfo.wordSet).some(w =>
+          w === token ||
+          (token.length > 4 && w.startsWith(token.slice(0, -1))) ||
+          (w.length > 4 && token.startsWith(w.slice(0, -1)))
+        );
+        if (matchInA) {
+          score += 5;
+        }
       }
+    }
+
+    // Se a pergunta do usuário tem palavras específicas mas o item não compartilha nenhuma palavra-chave relevante, reduz a pontuação
+    if (queryInfo.rawKeywords.length >= 2 && keywordMatches === 0 && questionInfo.norm !== queryInfo.norm) {
+      score -= 30;
     }
 
     return { item, score };
@@ -204,27 +299,25 @@ async function searchFaq(userQuery, customList = null) {
   // Ordena por maior pontuação
   scoredItems.sort((a, b) => b.score - a.score);
 
-  // Limiar de confiança mínima (>= 30)
-  if (scoredItems.length > 0 && scoredItems[0].score >= 30) {
+  // Limiar de confiança mínima (>= 45 para evitar respostas aleatórias)
+  if (scoredItems.length > 0 && scoredItems[0].score >= 45) {
     bestMatch = scoredItems[0].item;
     highestScore = scoredItems[0].score;
   }
 
-  // Sugestões inteligentes: foca estritamente no mesmo módulo/assunto e limita a 2 para não poluir
+  // Sugestões inteligentes: foca estritamente no mesmo módulo e apenas se houver afinidade
   let suggestions = [];
   if (bestMatch) {
     const currentModulo = bestMatch.modulo || '';
+    // Pega sugestões do mesmo módulo que compartilhem pelo menos 1 assunto com a dúvida
     suggestions = faqList
       .filter(i => i.pergunta !== bestMatch.pergunta)
       .filter(i => i.modulo === currentModulo)
       .slice(0, 2)
       .map(i => i.pergunta);
   } else {
-    // Se não encontrou, sugere no máximo 2 dúvidas em destaque
-    suggestions = faqList
-      .filter(i => i.destaque)
-      .slice(0, 2)
-      .map(i => i.pergunta);
+    // Se não encontrou resposta, NÃO joga perguntas aleatórias
+    suggestions = [];
   }
 
   if (bestMatch) {
@@ -239,7 +332,7 @@ async function searchFaq(userQuery, customList = null) {
   } else {
     return {
       found: false,
-      reply: 'Não encontrei uma resposta exata para a sua dúvida no manual do aplicativo. Veja abaixo algumas opções frequentes que podem te ajudar ou entre em contato com a secretaria.',
+      reply: 'Não encontrei uma resposta exata para a sua dúvida no manual do aplicativo.',
       suggestions: suggestions
     };
   }
@@ -593,8 +686,38 @@ app.get('/', (req, res) => {
   `);
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, async () => {
-  console.log(`🚀 Servidor de FAQ/Manual rodando em http://localhost:${PORT}`);
-  await testDbConnection();
-});
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const PORT = process.env.PORT || 9443;
+const certPath = path.join(__dirname, 'fullchain.pem');
+const keyPath = fs.existsSync(path.join(__dirname, 'privkey.pem'))
+  ? path.join(__dirname, 'privkey.pem')
+  : path.join(__dirname, 'private.pem');
+
+if (fs.existsSync(certPath) && fs.existsSync(keyPath)) {
+  try {
+    const httpsOptions = {
+      cert: fs.readFileSync(certPath),
+      key: fs.readFileSync(keyPath),
+      passphrase: process.env.SSL_PASSPHRASE || 'D21AXEL5'
+    };
+
+    https.createServer(httpsOptions, app).listen(PORT, async () => {
+      console.log(`🔒 Servidor HTTPS rodando com segurança na porta ${PORT}`);
+      console.log(`👉 https://localhost:${PORT}`);
+      await testDbConnection();
+    });
+  } catch (sslErr) {
+    console.error('⚠️ Erro ao carregar certificados SSL. Iniciando em HTTP como fallback:', sslErr.message);
+    http.createServer(app).listen(PORT, async () => {
+      console.log(`🚀 Servidor HTTP rodando na porta ${PORT}`);
+      await testDbConnection();
+    });
+  }
+} else {
+  http.createServer(app).listen(PORT, async () => {
+    console.log(`🚀 Servidor de FAQ/Manual rodando em HTTP na porta ${PORT}`);
+    await testDbConnection();
+  });
+}

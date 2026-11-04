@@ -272,7 +272,7 @@
   {
     "modulo": "Meus Ingressos",
     "pergunta": "Onde vejo o histórico dos meus ingressos passados?",
-    "resposta": "Acesse o seu Perfil e clique em Notificações. Todas as mensagens, lembretes de eventos e comunicados do clube serão exibidos nessa tela.",
+    "resposta": "Acesse seu Perfil e clique na opção Ingressos Anteriores. Lá você poderá consultar o histórico de todas as suas compras e ingressos de eventos passados ou já finalizados.",
     "destaque": false
   },
   {
@@ -314,13 +314,13 @@
   {
     "modulo": "Meus Ingressos",
     "pergunta": "Consigo tirar print do meu ingresso?",
-    "resposta": "Não, você não pode tirar print do seu ingresso, cada ingresso e indivual não permitindo tirar print por questão de segurança.",
+    "resposta": "Não é permitido tirar print do ingresso. O QR Code do ingresso é individual e dinâmico por questões de segurança. Apresente o aplicativo diretamente na portaria do evento.",
     "destaque": false
   },
   {
     "modulo": "Meus Ingressos",
     "pergunta": "Porque não consigo tirar print do meu ingresso??",
-    "resposta": "Porque não é permitido tirar print do ingresso por segurança.",
+    "resposta": "Não é permitido tirar print do ingresso por motivos de segurança e para evitar fraudes na entrada do evento.",
     "destaque": false
   },
   {
@@ -380,7 +380,7 @@
   {
     "modulo": "Perfil e Meus Dados",
     "pergunta": "Posso alterar o meu CPF cadastrado no aplicativo?",
-    "resposta": "Por questões de segurança e integridade fiscal, o CPF não pode ser editado pelo aplicativo após o cadastro inicial. Para regularizar seu CPF, entre em contato diretamente com a secretaria do clube com um documento oficial.",
+    "resposta": "Sim, você pode alterar seu CPF, clique no icone do perfil no lado direito do aplicativo, depois em meus dados e altere o seu CPF.",
     "destaque": false
   },
   {
@@ -392,7 +392,7 @@
   {
     "modulo": "Perfil e Meus Dados",
     "pergunta": "Como solicitar a exclusão definitiva da minha conta e dados?",
-    "resposta": "Acesse Perfil > Meus Dados, role até o final da tela e clique no botão Excluir conta. Uma confirmação será solicitada para prosseguir com a exclusão definitiva.",
+    "resposta": "Acesse Perfil Meus Dados, role até o final da tela e clique no botão Excluir conta. Uma confirmação será solicitada para prosseguir com a exclusão definitiva.",
     "destaque": false
   },
   {
@@ -493,7 +493,7 @@
   },
   {
     "modulo": "Detalhes do Evento",
-    "pergunta": "O que significa a mensagem Compra exlusiva para Associados em: AABB?",
+    "pergunta": "O que significa a mensagem Compra exclusiva para Associados em: AABB?",
     "resposta": "Essa mensagem indica que o evento é exclusivo para Associados do clube.",
     "destaque": true
   },
@@ -501,6 +501,66 @@
     "modulo": "Detalhes do Evento",
     "pergunta": "Como saber se o evento é exclusivo para Associados?",
     "resposta": "Na página do evento, se houver a mensagem Compra exclusiva para Associados em: AABB, significa que apenas Associados do clube podem adquirir ingressos para esse evento.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Como alterar ou redefinir a minha senha no aplicativo?",
+    "resposta": "Para alterar ou recuperar sua senha, na tela de login informe seu e-mail e clique em Iniciar. Em seguida, clique na opção Esqueci a senha / 1º Acesso para receber as instruções de recuperação.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Onde troco de senha?",
+    "resposta": "Na tela de login do aplicativo, digite seu e-mail, clique em Iniciar e toque em Esqueci a senha / 1º Acesso para cadastrar ou redefinir sua senha.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Como fazer o primeiro acesso no aplicativo?",
+    "resposta": "Na tela de login, informe seu e-mail cadastrado na associação, clique em Iniciar e depois toque em Esqueci a senha / 1º Acesso para definir sua senha de entrada.",
+    "destaque": false
+  },
+  {
+    "modulo": "Meus Ingressos",
+    "pergunta": "Como acessar ingressos antigos ou anteriores?",
+    "resposta": "Acesse o seu Perfil e clique em Ingressos Anteriores. Lá você poderá visualizar o histórico de todos os ingressos de eventos passados.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Fui comprar um ingresso mas ele me informa que é apenas para associados",
+    "resposta": "Caso você não consiga comprar o ingresso por esse motivo é porque esse lote ou setor é destinado exclusivamente para associados do clube.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Não consigo comprar ingresso ele me fala que é exclusivo para associado",
+    "resposta": "Esse ingresso ou lote é restrito a associados do clube. Se você for associado utilize a opção Você é Associado/Colaborador no topo do evento para validar seu CPF ou matrícula. Caso contrário selecione um setor ou lote aberto para o público geral.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "Não consigo comprar o ingresso o aplicativo me informa que é exclusivo para AABB",
+    "resposta": "A compra desse ingresso é exclusiva para associados vinculados à AABB. Caso queira se associar procure a secretaria da AABB mais próxima da sua região.",
+    "destaque": false
+  },
+  {
+    "modulo": "Detalhes do Evento",
+    "pergunta": "O aplicativo fala que o ingresso é exclusivo para associados da AABB o que fazer?",
+    "resposta": "Esse lote foi disponibilizado exclusivamente para sócios da AABB. Se você não é sócio só poderá comprar ingressos destinados a não associados caso estejam disponíveis para o evento.",
+    "destaque": false
+  },
+  {
+    "modulo": "Compra e Escolha de Lugares",
+    "pergunta": "Não consigo comprar nenhum ingresso lá me fala que preciso estar logado",
+    "resposta": "Para concluir a compra de qualquer ingresso é obrigatório estar conectado à sua conta. Acesse a tela de login digite seu e-mail e senha para entrar no aplicativo e tentar realizar a compra novamente.",
+    "destaque": false
+  },
+  {
+    "modulo": "Compra e Escolha de Lugares",
+    "pergunta": "Por que o aplicativo pede para estar logado para comprar ingresso?",
+    "resposta": "O login é obrigatório para que os ingressos adquiridos fiquem salvos em segurança vinculados ao seu CPF e apareçam na sua aba Meus Ingressos.",
     "destaque": false
   }
 ]

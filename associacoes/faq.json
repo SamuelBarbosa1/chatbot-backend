@@ -1,0 +1,284 @@
+[
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Como alterar a minha senha?",
+    "resposta": "Para alterar a sua senha, digite o seu e-mail na tela de login e clique em Iniciar. Depois, clique na opção Esqueci a senha / 1º acesso. Uma senha provisória será enviada para o seu e-mail cadastrado.",
+    "destaque": true
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Por que não chega nenhuma informação no meu e-mail?",
+    "resposta": "Se você não está recebendo nenhuma informação da Associação no seu e-mail, procure a secretaria.",
+    "destaque": true
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Por que não recebo a senha provisória no meu e-mail?",
+    "resposta": "Caso você não esteja recebendo a senha provisória no seu e-mail cadastrado, entre em contato com a secretaria.",
+    "destaque": true
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Por que não consigo entrar no aplicativo? Aparece a mensagem de que o meu e-mail não está cadastrado.",
+    "resposta": "Mesmo que você tenha informado o seu e-mail na secretaria, ele pode não ter sido cadastrado corretamente. Para descobrir o motivo, entre em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Por que não consigo entrar no aplicativo com a conta do dependente?",
+    "resposta": "Para verificar o motivo de não conseguir entrar no aplicativo com a conta do dependente, entre em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Posso adicionar dependente?",
+    "resposta": "Para adicionar um dependente, entre em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Por que, quando o meu dependente vai entrar no app, aparece a mensagem de que o número do celular não está identificado?",
+    "resposta": "Essa mensagem aparece quando o número de celular informado não é o mesmo que está no cadastro do dependente. Para conferir ou atualizar o número cadastrado, entre em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Por que não consigo entrar na conta do dependente com o número de telefone?",
+    "resposta": "O número de telefone precisa ser o do dependente, o mesmo que está no cadastro dele.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "Meu filho pode entrar no app?",
+    "resposta": "Pode sim. Ele precisa ter cadastro no sistema.",
+    "destaque": false
+  },
+  {
+    "modulo": "Perfil e Meus Dados",
+    "pergunta": "No cadastro do dependente, é pedida a senha do titular. Qual é essa senha?",
+    "resposta": "É a mesma senha que você, titular, usa para acessar o aplicativo.",
+    "destaque": false
+  },
+  {
+    "modulo": "Dependente Carteirinha",
+    "pergunta": "Como posso ver a carteirinha do meu dependente?",
+    "resposta": "Para ver a carteirinha, clique no botão Carteirinha, no lado esquerdo da tela. Caso a carteirinha não apareça, clique no botão Atualizar carteirinha. Se mesmo assim ela não aparecer, entre em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Dependente Convite",
+    "pergunta": "Como faço para retirar um convite sendo dependente?",
+    "resposta": "Para retirar convites, clique no botão Convites e verifique o Saldo para Retirada. Se houver saldo disponível, clique em Nova Retirada e informe a quantidade de convites que deseja retirar.",
+    "destaque": false
+  },
+  {
+    "modulo": "Dependente Convite",
+    "pergunta": "Como faço para emitir um convite?",
+    "resposta": "Para emitir convites, clique no botão Convites. Caso você já tenha feito a retirada, aparecerá abaixo a opção Data Retirada de Convite. Clique nela e preencha os campos do convite: nome, CPF do convidado e data de utilização.",
+    "destaque": false
+  },
+  {
+    "modulo": "Dependente Convite",
+    "pergunta": "Meu convidado pode reutilizar o convite?",
+    "resposta": "Não. Cada convite só pode ser usado uma vez.",
+    "destaque": false
+  },
+  {
+    "modulo": "Dependente Convite",
+    "pergunta": "Ao emitir um convite, aparece a mensagem de que a lista de convidados não foi salva por impedimentos na data de utilização. O que significa?",
+    "resposta": "Significa que já existem convites cadastrados para a data de utilização que você está tentando usar.",
+    "destaque": false
+  },
+  {
+    "modulo": "Dependente Reservas",
+    "pergunta": "Como faço para fazer uma reserva?",
+    "resposta": "Para fazer uma reserva, clique no botão Reservas, selecione o espaço desejado, preencha os campos necessários e clique em Agendar Reserva.",
+    "destaque": false
+  },
+  {
+    "modulo": "Dependente Eventos/Divulgações",
+    "pergunta": "Como vejo os eventos e as divulgações da Associação?",
+    "resposta": "Para ver os eventos e as divulgações da Associação, clique no botão Eventos/Divulgações e, depois, em Eventos/Divulgações.",
+    "destaque": false
+  },
+  {
+    "modulo": "Dependente",
+    "pergunta": "Por que o dependente não consegue liberar reserva?",
+    "resposta": "Para o dependente liberar reservas pelo aplicativo, é necessário entrar em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Dependente",
+    "pergunta": "Por que o dependente não consegue emitir convite?",
+    "resposta": "Para o dependente emitir convites pelo aplicativo, é necessário entrar em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Dependente",
+    "pergunta": "Por que o dependente não consegue retirar convite?",
+    "resposta": "Para o dependente retirar convites pelo aplicativo, é necessário entrar em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Associado Carteirinha",
+    "pergunta": "Como posso ver as carteirinhas que estão vinculadas ao meu cadastro?",
+    "resposta": "Para ver as carteirinhas vinculadas ao seu cadastro, clique no botão Carteirinha, no lado esquerdo da tela. Caso as carteirinhas não apareçam, clique no botão Atualizar carteirinha.",
+    "destaque": false
+  },
+  {
+    "modulo": "Associado Carteirinha",
+    "pergunta": "Onde vejo a minha carteirinha?",
+    "resposta": "Para ver a sua carteirinha, clique no botão Carteirinha, no lado esquerdo da tela. Caso ela não apareça, clique no botão Atualizar carteirinha.",
+    "destaque": false
+  },
+  {
+    "modulo": "Associado Carteirinha",
+    "pergunta": "Como troco a minha foto na carteirinha?",
+    "resposta": "Para trocar a sua foto na carteirinha, entre em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Associado Carteirinha",
+    "pergunta": "Minha carteirinha está vencida. O que faço?",
+    "resposta": "Para renovar a sua carteirinha, entre em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Associado Carteirinha",
+    "pergunta": "Por que a carteirinha não atualiza?",
+    "resposta": "Para atualizar a carteirinha, entre em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Associado Carteirinha",
+    "pergunta": "Onde vejo se a minha carteirinha venceu?",
+    "resposta": "Para verificar se a sua carteirinha venceu, acesse a tela Carteirinha, selecione a sua carteirinha e clique sobre ela. Depois, clique duas vezes para ver o verso, onde aparecem a validade e a categoria. Caso a data de vencimento não apareça, entre em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Convites",
+    "pergunta": "Como faço para retirar um convite?",
+    "resposta": "Para fazer uma nova retirada de convites, clique na tela Convites e verifique o Saldo para Retirada. Depois, clique em Nova Retirada, selecione a quantidade de convites e clique em Salvar. Em seguida, preencha os campos necessários: nome, CPF e data de utilização do convidado.",
+    "destaque": false
+  },
+  {
+    "modulo": "Convites",
+    "pergunta": "Meu convidado pode reutilizar o convite?",
+    "resposta": "Não. Cada convite só pode ser usado uma vez, a menos que ele seja do tipo reutilizável.",
+    "destaque": false
+  },
+  {
+    "modulo": "Convites",
+    "pergunta": "Quando vou emitir um convite, aparece a mensagem de que a lista de convidados não foi salva por impedimentos na data de utilização. O que significa?",
+    "resposta": "Significa que já existem convites cadastrados para a data de utilização que você está tentando usar.",
+    "destaque": false
+  },
+  {
+    "modulo": "Convites",
+    "pergunta": "Posso utilizar o mesmo convite para acessar mais de uma vez?",
+    "resposta": "Não. Cada convite só pode ser usado uma vez.",
+    "destaque": false
+  },
+  {
+    "modulo": "Convites",
+    "pergunta": "Como posso ter mais convites?",
+    "resposta": "Para ter mais convites para emitir, é necessário entrar em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Convites",
+    "pergunta": "Porque não posso fazer uma retiradas de convites, fala que estou com impedimento?",
+    "resposta": "Caso a mensagem diz que o associado está com impedimento é necessário entrar em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Convites",
+    "pergunta": "Por que não consigo fazer uma retirada de convites? Aparece a mensagem de que estou com impedimento.",
+    "resposta": "Caso a mensagem informe que o associado está com impedimento, é necessário entrar em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Reservas",
+    "pergunta": "Como faço uma reserva?",
+    "resposta": "Para fazer uma reserva, clique na tela Reservas, selecione o tipo de espaço disponível e clique no espaço desejado. Preencha os campos necessários e clique em Agendar Reserva. Em seguida, selecione o espaço disponível e clique em Reservar.",
+    "destaque": false
+  },
+  {
+    "modulo": "Reservas",
+    "pergunta": "Como posso consultar as minhas reservas?",
+    "resposta": "Para consultar as reservas feitas, clique na tela Reservas, selecione o tipo de espaço que foi reservado e clique em Consultar.",
+    "destaque": false
+  },
+  {
+    "modulo": "Reservas",
+    "pergunta": "Como cancelar uma reserva?",
+    "resposta": "Para cancelar uma reserva, clique na tela Reservas, selecione a reserva realizada, clique em Consultar e, depois, em Cancelar. Caso o botão Cancelar não apareça, entre em contato diretamente com a secretaria ou a diretoria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Financeiro",
+    "pergunta": "Como realizo os pagamentos?",
+    "resposta": "Para fazer um pagamento, clique na tela Financeiro e, depois, no campo Em Aberto. Selecione o vencimento que deseja pagar e toque nele. Caso não encontre o vencimento, entre em contato diretamente com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Financeiro",
+    "pergunta": "Por que não consigo ver os vencimentos na tela Financeiro?",
+    "resposta": "Para ver os vencimentos na tela Financeiro, clique no campo Em Aberto.",
+    "destaque": false
+  },
+  {
+    "modulo": "Financeiro",
+    "pergunta": "Onde vejo os vencimentos que já foram pagos?",
+    "resposta": "Para ver os vencimentos que já foram pagos, clique na tela Financeiro e, depois, no campo Pagamentos. Lá estarão todos os pagamentos já realizados.",
+    "destaque": false
+  },
+  {
+    "modulo": "Financeiro",
+    "pergunta": "Onde vejo os vencimentos que estão em aberto?",
+    "resposta": "Para ver os vencimentos que estão em aberto, clique na tela Financeiro e, depois, no campo Em Aberto.",
+    "destaque": false
+  },
+  {
+    "modulo": "Financeiro",
+    "pergunta": "Onde vejo os vencimentos que estão vencidos?",
+    "resposta": "Para ver os vencimentos que estão vencidos, clique na tela Financeiro e, depois, no campo Em Aberto.",
+    "destaque": false
+  },
+  {
+    "modulo": "Financeiro",
+    "pergunta": "Por que não consigo ver os meus vencimentos?",
+    "resposta": "Caso não apareça nenhum vencimento, entre em contato com a secretaria.",
+    "destaque": false
+  },
+  {
+    "modulo": "Dependente Eventos/Divulgações",
+    "pergunta": "Onde vejo os eventos e as divulgações?",
+    "resposta": "Para ver os eventos e as divulgações, vá até a tela Eventos/Divulgações e clique em Eventos. Lá estarão todos os eventos e divulgações.",
+    "destaque": false
+  },
+  {
+    "modulo": "Documentos",
+    "pergunta": "O que são esses documentos no aplicativo?",
+    "resposta": "Os documentos são enviados pela secretaria para os associados.",
+    "destaque": false
+  },
+  {
+    "modulo": "Notificações",
+    "pergunta": "Como desativo as notificações?",
+    "resposta": "Para desativar as notificações, clique nos três pontos no canto superior direito e desmarque a opção Notificações.",
+    "destaque": false
+  },
+  {
+    "modulo": "Notificações",
+    "pergunta": "Como ativo as notificações?",
+    "resposta": "Para ativar as notificações, clique nos três pontos no canto superior direito e marque a opção Notificações.",
+    "destaque": false
+  },
+  {
+    "modulo": "Notificações",
+    "pergunta": "Como visualizo as notificações que aparecem no aplicativo?",
+    "resposta": "Para visualizar as notificações, clique no sino no canto superior esquerdo e, depois, clique na notificação.",
+    "destaque": false
+  }
+]
